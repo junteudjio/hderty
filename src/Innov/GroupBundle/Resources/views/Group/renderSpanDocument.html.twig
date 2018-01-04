@@ -1,0 +1,23 @@
+ {% set nbre_cliches = doc.cliches|length %} 
+                                                 {% set ancien_nbre_cliches = nbre_cliches %}
+                                                  {% if nbre_cliches < 6 %}  
+                                                    <span style="width:{{nbre_cliches * 120}}px;">
+                                                  {% else %}
+                                                    <span style="width:{{ 6 * 120}}px;">
+                                                   
+                                                    {% set nbre_cliches = 5 %}
+                                                    
+                                                  {% endif %}
+
+                                                        {% for i in 1..nbre_cliches %}
+                                                          {% if  i <= 5 %}
+                                                              {% set cliche = doc.cliches[ i-1 ] %}
+                                                              <img src="{{ asset(cliche.uploadDir ~ '/' ~ cliche.id ~'.' ~ cliche.url) }}" alt="{{ cliche.alt }}" height="100" width="100"/>
+                                                          {% endif %}
+                                                        {% endfor %}
+                                                          {% if ancien_nbre_cliches >= 6 %}
+                                                           {% set reste = ancien_nbre_cliches - nbre_cliches %} 
+                                                            {{ '    + '~reste }}
+                                                          {% endif %}
+                                                       
+                                                    </span>     

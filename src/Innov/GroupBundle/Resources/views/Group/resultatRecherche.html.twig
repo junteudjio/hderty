@@ -1,0 +1,208 @@
+{# empty Twig template #}
+{% extends "::layout.html.twig" %}
+
+{% block searchForm %}
+    <form id="search_form" action="{{ path('InnovGroup_solrSearch', {'query': '_a_a_a_a_'}) }}" method="POST" >
+         {{ form_widget(form.query , { 'attr': {'id': 'nom', 'style':'color:black', 'class':'form-control input-sm', 'title': 'innov.navbar.title_search_bar'|trans , 'placeholder': 'innov.navbar.search_placeholder'|trans } }) }}
+        {{ form_rest(form)}}
+    </form>
+{% endblock %}
+
+{% block content %}
+    <div class="col-lg-7">
+    
+                          <header class="panel-heading">
+                              {{ 'innov.content.resultat_recherche'|trans }} : " {{ searchText }} "
+                              
+                              {{ 'innov.content.consulterDocGroupe_classerPar'|trans }} :<br><br>
+                       <div class="row">       
+                     <div class="btn-group"style="margin-left:20%;" >
+                                     
+                                 
+                              <a class="btn btn-white" href="{{ path('InnovGroup_solrSearch4', {'query': searchText, 'sort_mode': 'pertinence', 'offset': offset}) }}">  {{ 'innov.content.consulterDocGroupe_classerPar_pertinence'|trans }}</a> 
+                              <a class="btn btn-white" href="{{ path('InnovGroup_solrSearch4', {'query': searchText , 'sort_mode':'plus_recent', 'offset': offset}) }}"> {{ 'innov.content.consulterDocGroupe_classerPar_plus_recent'|trans }}</a>
+                              <a class="btn btn-white" href="{{ path('InnovGroup_solrSearch4', {'query': searchText, 'sort_mode': 'populaire', 'offset': offset}) }}"> {{ 'innov.content.consulterDocGroupe_classerPar_populaire'|trans }}</a>
+                    </div>
+                       </div>
+                          
+                              
+                          </header>
+                          <ul class="list-group">
+                              {% for doc in docs %}
+                                  <li class="list-group-item" style="padding:0;">
+                                     <div class="panel-body">
+                                        <div>
+                                            {% if doc.toString  starts with 'examCo' %}
+                                            <span style="font-size:10px;">{{  'innov.groupe.poster_dans'|trans  }}</span><a href="{{ path('InnovGroup_entrerGroupe', {'id': doc.groupe.id }) }}" style="font-size:11px;font-weight:bold;">
+                                                            {{ doc.groupe.nom  }}
+                                            </a>
+                                            
+                                            {% endif %}
+                                        </div>
+                                        <br>
+                                            <div class="task-thumb-details" style="margin-left:50px;">
+                                            <h1 style="float:left;">
+                                           {% if doc.toString starts with 'examCo' %}     
+                                                        {% set url = 'visionPublicExCo__'~doc.id~'*' %}   
+                                                      {% for doc in similaires[doc.idSolr] %}
+                                                                
+                                                                  {% set url = url~doc.idSolr~'*' %}
+                                                              
+                                                       {% endfor %}
+                                                <a id="{{ url }}" class="visionPublic tooltip1" href="#">{{ doc.titre }} <img src="{{ asset('img/voir.png') }}" width="20" height="20">
+                                                {% include "InnovGroupBundle:Group:renderSpanDocument.html.twig" %}  
+                                                </a>
+                                            {% endif %}
+                                                    
+                                                    
+                                           {% if doc.toString starts with 'document' %}   
+                                                    
+                                                 {% set url = 'visionPublicDoc__'~doc.id~'*' %} 
+                                                    
+                                                      {% for doc in similaires[doc.idSolr] %}
+                                                    
+                                                        
+                                                                  {% set url = url~doc.idSolr~'*' %}
+                                                           
+                                                                
+                                                       {% endfor %}
+                                                  
+                                                <a id="{{ url }}" class="visionPublic tooltip1" href="#">{{ doc.titre }} <img src="{{ asset('img/voir.png') }}" width="20" height="20">
+                                                   {% include "InnovGroupBundle:Group:renderSpanDocument.html.twig" %} 
+
+                                                </a>
+                                           {% endif %}
+                                            
+                                            
+                                             </h1>
+                                            
+                                            
+                                            </div> 
+                                        
+                                            <br><br><br>
+                                       <div>
+                                       {% if doc.toString starts with 'examCo' %}
+                                          <a title="{{ 'innov.groupe.title_commenter_doc'|transchoice(doc.commentaires|length) }}">{{ doc.commentaires|length }} <i class="icon-comments"></i></a>&nbsp;&nbsp;
+                                        
+                                        {% endif %}  
+                                        {#  <a title="{{ 'innov.groupe.title_aimer_doc'|transchoice(doc.nbreJaime) }}">{{ doc.nbreJaime }} <i class="icon-thumbs-up"></i></a> #}&nbsp;&nbsp;
+                                            <a  title="{{ 'innov.groupe.title_voir_doc'|transchoice(doc.nbreVue) }}" style="margin-right:90px;"> {{ 'innov.groupe.nbre_vue'|transchoice(doc.nbreVue) }} </a>&nbsp;&nbsp;
+                                                                                
+                                           
+                                         {#  <a title="{{ 'innov.groupe.title_aimer_doc_clic'|trans }}" style="cursor:pointer;" > {{ 'innov.groupe.jaime'|trans }}&nbsp;<i class="icon-thumbs-up"></i></a> #}&nbsp;&nbsp;
+                                           {% if doc.toString starts with 'document' %}
+                                                <a href="javascript:;" id="{{ 'favorisDoc_'~doc.id }}" class="favoris tooltip1" style="cursor:pointer;position:absolute;right:18px;"> <i class="icon-star  text-warning" style="font-size:17px;"></i>
+                                                <span>Ajouter Ce document a votre espace perso</span>
+                                                </a>
+                                           {% endif %}
+                                           {% if doc.toString starts with 'examCo' %}                                                
+                                                <a href="javascript:;" id="{{ 'favorisExamCo_'~doc.id }}" class="favoris tooltip1" style="cursor:pointer;position:absolute;right:18px;"> <i class="icon-star  text-warning" style="font-size:17px;"></i>
+                                                <span>Ajouter Ce document a votre espace perso</span>
+                                                </a>
+                                           {% endif %}     
+                                                <!-- Tags here -->
+                                        </div>    
+                                    </div>
+
+                                  </li>
+                              {% endfor %}
+                              
+                                  
+                              
+                              
+                                 
+                          </ul>
+        
+    </div>
+ <div class="col-lg-7">
+
+  {% if nbre_docs > 10 %}
+                              {% set nbre_pages = nbre_docs/ 10 %}
+                              {% set nbre_pages = nbre_pages|round(0, 'ceil') %}
+                              <ul class="pagination pagination-sm">
+                                 {% for p in 1..nbre_pages  %}
+                                    {% if loop.index == 1 %}
+                                        <li><a href="{{ path('InnovGroup_solrSearch4', {'query': searchText, 'sort_mode': 'default', 'offset': p}) }}">«</a></li>
+                                    {% elseif loop.index >1  and not loop.last %}
+                                         <li><a href="{{ path('InnovGroup_solrSearch4', {'query': searchText, 'sort_mode': 'default', 'offset': p}) }}">{{ p }}</a></li>
+                                    {% else %}
+                                         <li><a href="{{ path('InnovGroup_solrSearch4', {'query': searchText, 'sort_mode': 'default', 'offset': p}) }}">»</a></li>
+                                    {% endif %}
+                                    
+                                  {% endfor %}
+                              </ul>
+                         {% endif %}
+            </div>
+<style>
+ .tooltip1
+{
+  position: relative;
+ 
+  
+  display: inline-block;
+  text-decoration: none;
+  
+  outline: none;
+}
+
+.tooltip1 span
+{
+  visibility: hidden;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  z-index: 999;
+  width: 230px;
+  margin-left: -127px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  opacity: .9;
+  background-color: #ddd;
+  background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255,.4);
+}
+
+.tooltip1:hover
+{
+  border: 0; /* IE6 fix */
+}
+
+.tooltip1:hover span
+{
+  visibility: visible;
+}
+
+.tooltip1 span:before,
+.tooltip1 span:after
+{
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -8px;
+  border-top: 8px solid #ddd;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 0;
+}
+
+.tooltip1 span:before
+{
+  border-top-color: #ccc;
+  bottom: -8px;
+}
+</style>  
+{% endblock %}
+
+
+  

@@ -1,0 +1,21 @@
+{% extends "InnovGroupBundle::layout.html.twig" %}
+
+
+{% block body %}
+    <h3> bienvenue dans {{ groupe.nom }} </h3>
+    
+    <h4> {{ dossier.nom }}</h4>
+    
+    <div id="listeSousDossiers"> 
+        {% include "InnovGroupBundle:Group:listeSousDossiers.html.twig"  with {'sousDossiers' : dossier.sousDossiers}%}
+    </div>
+    
+     <button id='addSousDossierBut'  class='btn btn-primary'> Nouveau classeur </button>
+     
+     <img id='loading' src="{{ asset('img/loading.gif') }}"/>
+     {{ render(controller("InnovGroupBundle:Group:creerSousDossier", {'id':dossier.id})) }}
+     
+    
+
+     
+{% endblock %}

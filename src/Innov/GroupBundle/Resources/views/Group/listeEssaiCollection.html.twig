@@ -1,0 +1,56 @@
+{% for essaiCo in examCo.essaisCollections|reverse %}
+
+<tr>
+    <td>
+        <a   href="{{ path('InnovGroup_voirProfil', {'id':essaiCo.auteurEssaiCollection.id}) }} " class="task-thumb">
+            <img src="{{ asset(essaiCo.auteurEssaiCollection.photo.uploadDir ~ '/' ~ essaiCo.auteurEssaiCollection.photo.id ~'.' ~ essaiCo.auteurEssaiCollection.photo.url) }}" alt="{{ essaiCo.auteurEssaiCollection.photo.alt }}" height="29" width="29"/>         
+            <span style="font-size:10px"> {{ essaiCo.auteurEssaiCollection.nom ~'  '~ essaiCo.auteurEssaiCollection.prenom }}        </span>                                            </a>
+    </td>
+    <td><a style="cursor:pointer;"  id="{{ 'visionEssaiCo_'~essaiCo.id }}" class="visionEssaiCo">{{ essaiCo.titre }} <img src="{{ asset('img/voir.png') }}" width="20" height="20"/></a></td>
+    
+       
+        <td>
+            <a  title="{{ 'innov.groupe.title_voir_doc'|transchoice(essaiCo.nbreVue) }}">{{ 'innov.groupe.nbre_vue'|transchoice(essaiCo.nbreVue) }} </a>&nbsp;&nbsp;
+        </td>
+        <td>
+            <a  title="{{ 'innov.groupe.title_commenter_doc'|transchoice(essaiCo.commentaires|length) }}">{{ essaiCo.commentaires|length }}<i class="icon-comments" style="font-size:15px;"></i></a>
+         </td>
+        <td>
+            <a  style="cursor:pointer;"  id="{{ 'favorisEssaiCo_'~essaiCo.id }}" class="favoris" > <i class="icon-star text-warning" style="font-size:15px;" ></i></a>
+
+        </td>
+        <td>
+        {% if is_granted('DELETE', essaiCo) %}
+                    <a class="poubelleGroupe" href="javascript:;" id="{{ 'deleteEssaiCo_'~essaiCo.id }} "> <i class="icon-trash" style="font-size:15px;"></i></a>
+             {% endif %}
+        </td>
+    </tr>
+
+                                         {% endfor %}  
+   {# <tr class="nouvelleCorrection" id="{{ 'col_'~examCo.id }}">
+        <td class="affiche">
+            <a  style="margin-left:40px;padding:0;" data-fancybox-type="iframe" class="btn green" id="fancy-upload2" href="{{ path("InnovGroup_test3", {'id': examCo.id }) }}">
+                <i class="icon-camera text-primary" style="font-size:22px;"></i>
+
+            </a>
+
+        </td>
+         <td></td>
+        <td class="affiche"> {{ 'innov.groupe.partager_essai'|trans }} </td>
+        <td></td>
+        <td class="affiche">
+            <a   style="margin-right:60px;padding:0;" class="btn green" >
+
+                <i class="icon-home text-default open_perso2" style="font-size:22px;" id=" {{ 'open_'~examCo.id }}"></i>   
+
+            </a> 
+
+        </td>
+        
+       
+        <td class="nodeTemp2" style="display:none"></td> 
+        <td class="message" style="display:none">{{ 'innov.groupe.partager_clic'|trans }}</td> 
+        <td class="message" style="display:none"></td>
+        <td></td>
+
+    </tr> #}

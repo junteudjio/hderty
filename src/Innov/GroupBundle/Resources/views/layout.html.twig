@@ -1,0 +1,51 @@
+{# src/Innov/UserBundle/Resources/views/layout.html.twig #}
+{# On étend notre layout #}
+{% extends "::layout.html.twig" %}
+{# Dans notre layout, il faut définir le block body #}
+{% block infoGroupe %}
+
+  {# on cache le formulaire d'ajout de membre si le user se rend sur la page demandeRejoindreGroupe ou VouloirRejoindreGroupe #}                    
+         
+<div class="row">               
+    <div class="col-lg-7" style="padding-right:0;">
+        <section class="panel">
+            <div class="panel-body" style="padding:6px;">
+                <ul class="summary-list" style="">
+                    <li style="width:28%;">
+                        <a href="{{ path('InnovGroup_entrerGroupe', {'id': groupe.id }) }}">
+                            <i class=" icon-globe text-primary"></i>
+                                                  {{ groupe.nom }}
+                        </a>
+                    </li>
+                    <li style="width:28%;">
+                        <a href="{{ path('InnovGroup_voirMembres', {'id': groupe.id }) }}" >
+                            <i class="icon-group text-primary"></i>
+                                               {{ 'innov.groupe.voir_membres'|transchoice(groupe.membres|length) }}
+                        </a>
+                    </li>
+                    <li style="margin-left:28px;width:28%;">
+                          <a data-fancybox-type="iframe" id="fancyAjout" href="{{ path("InnovGroup_ajoutMembre", {'id': groupe.id})  }}" >
+                              <i class=" icon-user text-primary"></i></i>
+                             {{ 'innov.groupe.form_ajout_membre_label'|trans }} </a>
+                    </li>
+                  </ul>
+                    
+            
+            </div>
+        </section>
+          
+            
+                
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+{% endblock %}

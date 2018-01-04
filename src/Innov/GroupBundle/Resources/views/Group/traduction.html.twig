@@ -1,0 +1,44 @@
+<html>
+<body>
+
+    {{ 'hello'|trans }}
+{{ app.request.attributes.all['_route'] }}
+    
+ 
+    
+   
+      
+      
+      
+      
+    {% set route_params_fr = {} %} 
+    {% set route_params_en = {} %} 
+    {% set route_params_ar = {} %} 
+      {% set old_route_params = app.request.attributes.all['_route_params'] %}  
+    
+      {% for key, value in old_route_params  %}
+            {% if key == '_locale' %}      
+              {% set route_params_fr = route_params_fr|merge({ (key) : 'fr'}) %}   
+              {% set route_params_en = route_params_en|merge({ (key) : 'en'}) %}   
+              {% set route_params_ar = route_params_ar|merge({ (key) : 'ar'}) %}   
+            {% endif %}
+      {% endfor %}
+    {% for key, value in old_route_params %}
+            {% if key != '_locale' %}
+              
+             {% set route_params_fr = route_params_fr|merge({ (key) : value}) %}   
+              {% set route_params_en = route_params_en|merge({ (key) : value}) %}   
+              {% set route_params_ar = route_params_ar|merge({ (key) : value}) %}   
+            {% endif %}
+      {% endfor %}
+      
+    {{ dump( route_params_fr) }}
+    {{ dump( route_params_en) }}
+    {{ dump( route_params_ar) }}
+    
+      
+               
+               
+   
+</body>
+</html>

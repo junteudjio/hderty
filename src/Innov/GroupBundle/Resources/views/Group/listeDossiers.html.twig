@@ -1,0 +1,3 @@
+{% for dossier in dossiers %}
+    <p><a href="{{ path('InnovGroup_entrerDossier', {'id': dossier.id }) }}">{{ dossier.nom }}</a></p>
+{% endfor %}

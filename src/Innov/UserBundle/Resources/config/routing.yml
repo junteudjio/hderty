@@ -1,0 +1,35 @@
+fos_user_security:
+    resource: routing/security.xml
+    prefix:    /{_locale}
+    requirements:
+        _locale: en|fr|ar
+
+fos_user_profile:
+    resource: routing/profile.xml
+    prefix: /{_locale}/profile
+    requirements:
+        _locale: en|fr|ar
+
+fos_user_register:
+    resource: routing/registration.xml
+    prefix: /{_locale}/register
+    requirements:
+        _locale: en|fr|ar
+
+fos_user_resetting:
+    resource: routing/resetting.xml
+    prefix: /{_locale}/resetting
+    requirements:
+        _locale: en|fr|ar
+
+fos_user_change_password:
+    resource: routing/change_password.xml
+    prefix: /{_locale}/profile
+    requirements:
+        _locale: en|fr|ar
+    
+fos_user_admin:
+    pattern: /{_locale}/admin
+    defaults:  { _controller: InnovUserBundle:Admin:index }	
+    requirements:
+        _locale: en|fr|ar

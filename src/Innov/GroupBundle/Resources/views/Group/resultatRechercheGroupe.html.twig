@@ -1,0 +1,26 @@
+{# empty Twig template #}
+{% extends "::layout.html.twig" %}
+
+
+
+{% block content %}
+    <div class="col-lg-7">
+    
+                          <header class="panel-heading">
+                              {{ 'innov.content.resultat_recherche'|trans }}  : " {{ searchTextGroupe }} "
+                        
+                          </header>
+                        {% if  groupes|length > 0  %}
+                           {% include "InnovGroupBundle:Group:renderGroupes.html.twig" %} 
+            
+                         {% else %}
+                            <h1>    "{{  searchTextGroupe }}"  {{ 'innov.content.groupe_non_trouve'|trans }} </h1>
+                            <h2>  {{ 'innov.content.verif_orthographe_ou'|trans }}<a  href="{{ path('InnovGroup_allGroups') }}"> {{ 'innov.content.consulter_liste_groupe'|trans }}</a></h2>
+                          {% endif %}
+                                
+                         
+
+            </div>
+{% endblock %}
+
+

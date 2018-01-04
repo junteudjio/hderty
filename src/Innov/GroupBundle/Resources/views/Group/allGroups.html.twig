@@ -1,0 +1,22 @@
+{# empty Twig template #}
+{% extends "::layout.html.twig" %}
+
+
+
+{% block content %}
+    <div class="col-lg-7">
+    
+                          <header class="panel-heading">
+                              {{ 'innov.content.listesDesGroupesTitre'|trans }}
+                        
+                          </header>
+                          {% set  groupes = allGroups %}
+                        {% include "InnovGroupBundle:Group:renderGroupes.html.twig" %} 
+            
+                                
+                         
+
+            </div>
+{% endblock %}
+
+

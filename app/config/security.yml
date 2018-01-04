@@ -1,0 +1,54 @@
+imports:
+    - { resource: "@InnovUserBundle/Resources/config/security.yml" }
+
+security:
+    access_denied_url: /accessDenied
+    acl:
+        connection: default      
+        
+    
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_CONFIRMED_USER: ROLE_USER
+
+    
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login/, role: ROLE_CONFIRMED_USER }
+        - { path: ^/creer/groupe, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/groupe, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/dossier, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/rejoindre/groupe, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/accepter/demande, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/creer/dossier, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/creer/sousDossier, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/add/ExamCollection, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/add/test, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/add/test2, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/add/test3, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/creer/sousDossierPerso, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/switcher, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/renderJsTree, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/ajaxTags, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/visionnerDoc, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/visionnerExCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/deletePerso, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/getTags, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/ajoutMembre, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/partagerExCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/partagerEssaiCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/commenterExCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/commenterEssaiCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/SupprimerCommentExCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/SupprimerCommentEssaiCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/AfficherCommentExCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/AfficherCommentEssaiCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/visionnerEssaiCo, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/AjouterAuxFavoris, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/voirMembres, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/vouloirRejoindreGroupe, role: IS_AUTHENTICATED_REMEMBERED }
+        

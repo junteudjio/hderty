@@ -1,0 +1,49 @@
+{% for essaiCo in examCo.essaisCollections %}
+
+                                            <tr>
+                                                <td>
+                                                    <a href="#" class="task-thumb">
+                                                        <img src="http://localhost/innov1/web/avatar.jpg" width="25" height="25" alt="">
+                                                    {{ essaiCo.auteurEssaiCollection.nom ~'  '~ essaiCo.auteurEssaiCollection.prenom }}                                                    </a>
+                                                </td>
+                                                <td><a href="#" id="{{ 'visionEssaiCo_'~essaiCo.id }}" class="visionEssaiCo">{{ essaiCo.titre }} <img src="http://localhost/innov1/web/voir.png" width="20" height="20"/></a></td>
+                                                <td>
+                                                    le {{ essaiCo.dateCreation|date("m/d/Y") }}
+                                                </td> 
+                                                <td>
+                                                    <a href="#"> <i class="icon-thumbs-up btn-xs text-info"></i>{{ essaiCo.nbreJaime }}</a>&nbsp;&nbsp;
+                                                    <a href="#"><i class="icon-comments btn-xs text-info"></i>{{ essaiCo.commentaires|length }}</a>
+                                                    <a href="#"><i class="icon-eye-open btn-xs text-primary"></i>{{ essaiCo.nbreVue }} </a>
+                                                    
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:;" id="{{ 'favorisEssaiCo_'~essaiCo.id }}" class="favoris" > <i class="icon-star text-warning" ></i></a>
+
+                                                </td>
+                                                
+                                            </tr>
+                                           
+                                         {% endfor %}  
+                                            <tr class="nouvelleCorrection" id="{{ 'col_'~examCo.id }}">
+                                                <td class="affiche">
+                                                    <a style="margin-left:60px;padding:0;" data-fancybox-type="iframe" class="btn green" id="fancy-upload2" href="{{ path("InnovGroup_test3", {'id': examCo.id }) }}">
+                                                        <i class="icon-camera text-primary" style="font-size:22px;"></i>
+
+                                                     </a>
+
+                                                   </td>
+                                                   <td class="affiche"> Ajouter un Essai </td>
+                                                   <td class="affiche">
+                                                    <a style="margin-right:60px;padding:0;" class="btn green" >
+                                                        
+                                                       <i class="icon-home text-default open_perso2" style="font-size:22px;" id=" {{ 'open_'~examCo.id }}"></i>   
+                                                        
+                                                     </a> 
+
+                                                   </td>
+                                                   
+                                                   <td class="nodeTemp2" style="display:none"></td> 
+                                                   <td class="message" style="display:none">Double cliquer pour choisir</td> 
+                                                   <td class="message" style="display:none"></td>
+
+                                             </tr>

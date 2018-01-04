@@ -1,0 +1,32 @@
+
+innov_user:
+    resource: "@InnovUserBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+innov_group:
+    resource: "@InnovGroupBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+InnovGroupBundle:
+    resource:  "@InnovGroupBundle/Resources/config/routing.yml"
+    prefix:    /{_locale}
+    defaults: { _locale : fr }
+    requirements:
+        _locale: en|fr|ar
+
+InnovGroup_index2: 
+    pattern: /{_locale}
+    prefix: /
+    defaults: { _controller: InnovGroupBundle:Group:accueil, _locale: fr }
+    
+InnovGroup_capture_erreur:
+    pattern: /{tout_type_url}
+    defaults:  { _controller: InnovGroupBundle:Group:accueil } 
+    requirements:
+      tout_type_url: ".*"
+        
+    
+oneup_uploader:
+    resource: .
+    type: uploader

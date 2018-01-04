@@ -1,0 +1,175 @@
+
+
+  {% for examCo in examCollections|reverse %}
+
+                            
+                            <div class="col-lg-7" style="padding-right:0;">
+                                <!--user info table start-->
+                              
+                                <section class="panel" >
+                                    <div class="panel-body">
+                                        <div>
+                                        <a style="cursor:pointer;" href="{{ path('InnovGroup_voirProfil', {'id':examCo.auteurExamCollection.id}) }} "  class="task-thumb">
+                                                <img src="{{ asset(examCo.auteurExamCollection.photo.uploadDir ~ '/' ~ examCo.auteurExamCollection.photo.id ~'.' ~ examCo.auteurExamCollection.photo.url) }}" alt="{{ examCo.auteurExamCollection.photo.alt }}" height="29" width="29"/>         
+                                                 {{ examCo.auteurExamCollection.nom ~'  '~ examCo.auteurExamCollection.prenom }}
+                                        </a>
+                                            <span  style="position:absolute;right:15px;">
+                                                 {{ examCo.dateCreation|date("d/m/Y - H:i:s") }}
+                                             {% if is_granted('DELETE', examCo) %}
+                                                <a class="poubelleGroupe tooltip1" href="javascript:;" id="{{ 'deleteExamCo_'~examCo.id }} " style="margin-left:13px;cursor:pointer;"> <i class="icon-trash"></i>
+                                                    <span>Supprimer Ce post</span></a>
+                                            {% endif %}
+                                            </span> 
+                                        </div>
+                                        <br/>
+                                            <div class="task-thumb-details" style="margin-left:50px;">
+                                            <h1 style="float:left;"><a style="cursor:pointer;" id="{{ 'visionExCo_'~examCo.id }}" class="visionExCo tooltip1" >{{ examCo.titre }} <img src="{{ asset('img/voir.png') }}" width="18" height="18" id="loupe"/>
+                                                {% set doc = examCo %}
+                                               {% include "InnovGroupBundle:Group:renderSpanDocument.html.twig" %} 
+
+                                                </a></h1>
+                                            
+                                            
+                                            </div> 
+                                        
+                                            <br/><br/><br/>
+                                           
+                                           
+                                           
+                                       <div>
+                                                                                                                                                                                                                 
+                                           <a title="{{ 'innov.groupe.title_commenter_doc'|transchoice(examCo.commentaires|length) }}">{{ examCo.commentaires|length }} <i class="icon-comments"></i></a>&nbsp;&nbsp;
+                                           {# <a title="{{ 'innov.groupe.title_aimer_doc'|transchoice(examCo.nbreJaime) }}">{{ examCo.nbreJaime }} <i class="icon-thumbs-up"></i></a> #}&nbsp;&nbsp;
+                                            <a  title="{{ 'innov.groupe.title_voir_doc'|transchoice(examCo.nbreVue) }}" style="margin-right:90px;"> {{ 'innov.groupe.nbre_vue'|transchoice(examCo.nbreVue) }} </a>&nbsp;&nbsp;
+                                                                                
+                                           
+                                         {#  <a title="{{ 'innov.groupe.title_aimer_doc_clic'|trans }}" style="cursor:pointer;" > {{ 'innov.groupe.jaime'|trans }}&nbsp;<i class="icon-thumbs-up"></i></a> #}&nbsp;&nbsp;
+                                           
+                                           <a   style="cursor:pointer;position:absolute;right:18px;" id="{{ 'favorisExamCo_'~examCo.id }}" class="favoris tooltip1" > <i class="icon-star  text-warning" style="font-size:17px;" ></i>
+                                               <span>{{ 'innov.groupe.title_favoris_doc'|trans }}</span>
+                                           </a>
+
+                                           <!-- Tags here -->
+                                        </div>    
+                                    </div>
+                                    <table class="table table-hover personal-task">
+                                        <tbody id="{{ 'essaiCollection_'~examCo.id }}">
+                                             {% include "InnovGroupBundle:Group:listeEssaiCollection.html.twig" %} 
+                                            
+                                        </tbody>
+                                    </table>
+                                    <hr style="margin:0;">
+                                    
+      <div class="nouvelleCorrection" id="{{ 'col_'~examCo.id }}" style="padding:13px;">
+        <span class="affiche" style="position:absolute;left:130px;">
+            <a  style="padding:0;" data-fancybox-type="iframe" class="btn green" id="fancy-upload2" href="{{ path("InnovGroup_test3", {'id': examCo.id }) }}">
+                <i class="icon-camera text-primary" style="font-size:22px;"></i>
+
+            </a>
+            
+        </span>
+          <span class="affiche" style="position:absolute;left:190px;">{{ 'innov.groupe.partager_essai'|trans }}</span>
+        
+        
+        <span class="affiche" style="position:relative;left:350px;">
+            <a   style="padding:0;" class="btn green" >
+
+                <i class="icon-home text-default open_perso2" style="font-size:22px;" id=" {{ 'open_'~examCo.id }}"></i>   
+
+            </a> 
+
+        </span>
+          <p align="center" class="nomDocument" style="display:none"></p>
+       
+        <span class="nodeTemp2" style="display:none;position:relative;left:240px;"></span> 
+        <span class="message" style="display:none;position:relative;left:100px;">{{ 'innov.groupe.partager_clic'|trans }}</span> 
+        
+        
+
+    </div> 
+                                    
+                                </section>
+                             
+                            </div>
+                            <div class="col-lg-3" style="padding-left:0;">
+                                            <ul class="tags">
+                                                 {% for tag in examCo.tags %}
+                                                         <li><a  class="tag">{{ tag.text }}</a></li>    
+                                                {% endfor %}
+                                             </ul>
+                                        </div>
+                            
+
+                            {% endfor %}
+<style>
+ .tooltip1
+{
+  position: relative;
+ 
+  
+  display: inline-block;
+  text-decoration: none;
+  
+  outline: none;
+}
+
+.tooltip1 span
+{
+  visibility: hidden;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  z-index: 999;
+  width: 230px;
+  margin-left: -127px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  opacity: .9;
+  background-color: #ddd;
+  background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255,.4);
+}
+
+.tooltip1:hover
+{
+  border: 0; /* IE6 fix */
+}
+
+.tooltip1:hover span
+{
+  visibility: visible;
+}
+
+.tooltip1 span:before,
+.tooltip1 span:after
+{
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -8px;
+  border-top: 8px solid #ddd;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 0;
+}
+
+.tooltip1 span:before
+{
+  border-top-color: #ccc;
+  bottom: -8px;
+}
+</style>    
+
+
+    

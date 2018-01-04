@@ -1,0 +1,155 @@
+innov: 
+    register_and_login:
+        label: Inscription H-Derty
+        prenom: prenom
+        prenom_place_h: votre prenom
+        nom: nom
+        nom_place_h: votre nom
+        email: email
+        email_place_h: votre email
+        password: mot de passe 
+        confirm_password: confirmez le mot de passe
+        creer_btn: creer un nouveau compte  
+        deja_un_compte: vous êtes déjà membre ?
+        nouveau: nouveau ?
+          
+          
+    accueil:
+        inscription: s'inscrire
+        creer_compte: creer un compte
+        login: connexion
+        slogan: les étudiants l'adorent avant, pendant et après leurs examens !
+        hderty_vous_permet: vous permet de <br> 1- retrouver des sujets d' examens de votre école et <br> d' ailleurs qui vous interessent ! <br> 2- grâce à votre mobile, partager rapidemment<br> exercices et solutions avec vos collègues !<br> 3- résoudre tout types d' exercices en ligne avec vos <br> camarades et profiter de l' intelligence collective <br> pour aller plus vite ! <br> 4- Et surtout de réussir à vos examens !
+        
+        hderty_vous_permet_conclusion: Réussir devient plus simple grâce à H-derty 
+        regarder_video: regardez cette vidéo pour en savoir plus sur
+        
+        
+        utile: Utile
+        social: Social
+        benefique: Bénéfique
+        
+        utile_desc: Chercher des anciennes épreuves <br> ça arrive à tout le monde ! <br> Arrêtez de Chercher ;<br>vous les avez déjà sur 
+          
+        social_desc1: Pourquoi Travailler tout seul ? <br> la vie c'est social , les études c'est social ,<br> le boulot c'est social !  
+          
+        social_desc2: Aussi c'est Social !
+        
+        benefique_desc1: les  "photocopies" c'est dépassées,  <br> les "photos" c'est mieux !  <br> utiliser
+        
+        benefique_desc2: et <br> partager rapidemment épreuves & <br> corrigés avec vos collègues
+          
+        
+        telecharger_mobile: Télécharger H-Derty-Mobile
+        
+        hderty_partout: Hderty est partout!
+        
+        
+        
+        
+    aller_a_laccueil: retournez à l'accueil
+    welcome: Bienvenue 
+    erreur_serveur:
+        label: Les Serveurs  H-derty  sont partiellement Indisponible pour le moment
+        excuse: Nous nous excusons pour ce léger désagremment
+    
+    notification:
+        label: notifications
+        accepter_demande: accepter
+          
+    groupe:
+        form_button_creer: creer un groupe
+        form_creer_header: creer un nouveau groupe
+        form_fermer: annuler
+        creer_action: créer
+        form_nom_groupe_label: nom du groupe
+        form_ajout_membre_label: ajouter des membres
+        ajout_membre_placeholder: entrez les noms de vos collègues ici
+        demande_rejoindre:  demandez à rejoindre ce groupe
+        deja_membre: vous êtes déjà membre  de ce groupe
+        poster_dans: posté dans
+        button_chercher: chercher un groupe
+
+        mes_groupes: mes groupes
+
+        voir_membres: "%count% membre|]1,+Inf] %count% membres"
+
+        jaime: j' aime
+        commenter: commenter
+        partager_ennonce: partager un énoncé
+        partager_essai: partager votre correction
+        partager_clic: DOUBLE-CLIQUEZ sur le document pour le partager
+        nbre_vue: "%count% vue|]1,+Inf]%count% vues"
+        title_commenter_doc: "soyez le premier à commenter ce document|]0,1] %count% personne a commenté ce document|]1,+Inf]%count% personnes ont commenté ce document"
+        title_aimer_doc: "soyez le premier à aimer ce document|]0,1] %count% personne a aimé ce document|]1,+Inf]%count% personnes ont aimé ce document"
+        title_voir_doc: "soyez le premier à consulter ce document|]0,1] %count% personne a consulté ce document|]1,+Inf]%count% personnes ont consulté ce document"
+        title_favoris_doc: ajouter ce document à vos favoris
+        title_partager_dans_groupe_doc: partager ce document dans un groupe
+        title_aimer_doc_clic: cliquer ici si vous aimé ce document
+        title_commenter_doc_clic: cliquer ici pour commenter ce document
+        ajout_doc_upload: partager depuis votre ordinateur
+        ajout_doc_espace_perso: partager depuis votre  <br> espace perso
+        
+    navbar:
+        message:
+            header: "aucun nouveau message| ]0,1]%count% nouveau message |]1,+Inf] %count% nouveaux messages"
+            contenu: vous a envoyé un message à
+            footer: voir tous mes messages
+
+        notification:
+            header: "aucune nouvelle notification| ]0,1] %count% nouvelle notification |]1,+Inf] %count% nouvelles notifications"
+            footer: voir toutes mes notifications
+            notif_demande_rejoindre: a demander à rejoindre le groupe
+            notif_accepter_demande: a accepter votre demande à rejoindre 
+            notif_vous_a_ajouter: vous a ajouter au groupe
+
+        search_placeholder: recherchez des exercices, examens, epreuves, TDs, ..., qui vous interessent
+        title_search_bar: entrez des mots clés exemple   "fonctions injectives ; épreuve d'algèbre ENSA tanger 2010 "
+        plein_ecran: plein ecran
+
+        profil: votre profil
+        securite: sécurité
+
+        deconnexion: se déconnecter
+
+    espace_perso:
+        header: ESPACE PERSO
+        creer_dossier: creer un dossier
+        ajout_document: ajouter un document
+        mes_uploads: Telechargements
+        mes_favoris: Favoris
+        placeholder_creer_dossier: nom du 
+        helper_text: ( CLIC-DROIT pour ouvrir vos documents )
+   
+        
+    upload_form:
+        header: télécharger un nouveau document
+        document_titre: donner un nom à ce document
+        document_tag: ajouter des tags
+        button_add: ajouter des images
+        button_submit: télécharger
+        button_annuler: annuler
+        button_supprimer: supprimer ces images
+        document_description: ajouter une description 
+    
+    content:
+       listesDesGroupesTitre: Liste Des Groupes 
+       groupeAdminLabel: Administrateur
+       vouloirRejoindreGroupe: rejoindre ce groupe
+       vouloirRejoindreGroupe2: Vous n'êtes pas encore membres de ce groupe ! voulez vous le rejoindre ?
+       voirMembresGroupe:  consulter la liste des membres
+       resultat_recherche:  resultat de la recherche pour
+       voirDocumentsGroupe: consulter ces documents
+       nombreDeMembres: '1 membre| %count% membres'
+       nombreDeDocumentsPartages: '{0} aucun document partagé|{1} %count% document partagé| ]1,Inf]environ %count% documents partagés'
+       consulterDocGroupe_label:  les Documents Du Groupe 
+       consulterDocGroupe_classerPar:  classer Par
+       consulterDocGroupe_classerPar_pertinence: pertinence
+       consulterDocGroupe_classerPar_plus_recent: plus recent
+       consulterDocGroupe_classerPar_populaire : populaire
+       recommandations : Ces documents pourraient vous interesser
+       groupe_non_trouve: n'a pas été trouvé
+       verif_orthographe_ou: vérifier l'orthographe  ou alors
+       consulter_liste_groupe: consulter la liste des groupes
+       
+       

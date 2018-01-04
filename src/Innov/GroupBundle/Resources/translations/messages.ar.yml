@@ -1,0 +1,112 @@
+innov.groupe.form_button_creer: 'إنشاء مجموعة'
+innov.groupe.button_chercher: 'ابحث عن مجموعة'
+innov.groupe.form_creer_header: 'إنشاء مجموعة جديدة'
+innov.groupe.form_nom_groupe_label: 'اسم المجموعة'
+innov.groupe.form_ajout_membre_label: 'إضافة بعض الأعضاء'
+innov.groupe.form_fermer: إلغاء
+innov.groupe.creer_action: انشاء
+innov.groupe.ajout_membre_placeholder: 'اكتب أسماء زملائك'
+innov.groupe.mes_groupes: 'مجموعاتي'
+innov.groupe.voir_membres: '{0} %count% عضو|{1} %count% عضو|]1,Inf] %count% أعضاء'
+innov.groupe.jaime: أحب
+innov.groupe.poster_dans: نشر في
+innov.groupe.commenter: تعليق
+innov.groupe.partager_ennonce: 'شارك التمرين'
+innov.groupe.partager_essai: 'شارك الحل'
+innov.groupe.partager_clic: 'انقر مرتين على الوثيقة التي تريد مشاركتها'
+innov.groupe.nbre_vue: '{0} %count% view|{1} %count% view|]1,Inf]%count% views'
+innov.groupe.title_commenter_doc: '{0} be the first to comment this document|{1} %count% person commented this document|]1,Inf]%count% people commented this document'
+innov.groupe.title_aimer_doc: '{0} be the first to like this document|{1} %count% person likes this document|]1,Inf]%count% people like this document'
+innov.groupe.title_voir_doc: '{0} be the first to consult this document|{1} %count% person viewed this document|]1,Inf]%count% people viewed this document'
+innov.groupe.title_favoris_doc: ' إضافة هذه الوثيقة إلى قائمة المفضلات '
+innov.groupe.title_partager_dans_groupe_doc: 'شارك هذه الوثيقة ضمن مجموعة'
+innov.groupe.title_aimer_doc_clic: 'انقر هنا إذا أحببت  هذه الوثيقة'
+innov.groupe.title_commenter_doc_clic: 'انقر هنا إذا أحببت  هذا المحتوى'
+innov.groupe.ajout_doc_upload: 'شارك من حاسوبك الخاص'
+innov.groupe.ajout_doc_espace_perso: 'شارك من خلال فضائك الشخصي '
+innov.navbar.message.header: '{0} no new message| {1} %count% new message |]1,Inf] %count% new messages'
+innov.navbar.message.contenu: 'أرسلت لاك رسالة على الساعة '
+innov.navbar.message.footer: 'إظهار كل رسائلي'
+innov.navbar.notification.header: '{0} no new notification|{1} %count% new notification | ]1,Inf]%count% new notifications'
+innov.navbar.notification.notif_demande_rejoindre: 'طلب الانضمام إلى مجموعة'
+innov.navbar.notification.notif_accepter_demande: 'قبل طلبك للانضمام إلى '
+innov.navbar.notification.notif_vous_a_ajouter: 'أضافك إلى المجموعة'
+innov.navbar.notification.footer: 'عرض كل الشعارات '
+innov.navbar.search_placeholder: 'بحث عن التمارين والامتحانات والاختبارات، وغيرها من الأمور ذات الاهتمام الخاص'
+innov.navbar.title_search_bar: 'إدخال بعض الكلمات المفاتيح على سبيل المثال "الدوال التفاضلية ؛ امتحان الجبر ENSA طنجة عام 2010"'
+innov.navbar.plein_ecran: 'عرض على كامل الشاشة '
+innov.navbar.profil: 'الصفحة الخاصة بك'
+innov.navbar.securite: حماية
+innov.navbar.deconnexion: خروج
+innov.espace_perso.header: 'فضاؤك الشخصي '
+innov.espace_perso.helper_text: (انقر بزر الماوس الأيمن لفتح الملفات)
+innov.espace_perso.creer_dossier: 'إنشاء ملف '
+innov.espace_perso.ajout_document: 'إضافة وثيقة '
+innov.espace_perso.mes_uploads: الإضافات
+innov.espace_perso.mes_favoris: قائمة التفضيلات
+innov.espace_perso.placeholder_creer_dossier: 'اسم الملف '
+innov.upload_form.header: 'تحميل وثيقة جديدة'
+innov.upload_form.document_titre: 'إعطاء اسم لهذه الوثيقة'
+innov.upload_form.document_tag: 'إضافة بعض العلامات'
+innov.upload_form.button_add: ' إضافة صور'
+innov.upload_form.button_submit: 'بدء تحميل'
+innov.upload_form.button_annuler: إلغاء
+innov.upload_form.button_supprimer: حذف
+innov.upload_form.document_description: 'إضافة وصف'
+hello: hello
+innov.accueil.inscription: 'اشترك'
+innov.accueil.login: الولوج 
+innov.accueil.slogan: 'يعجب الطلاب قبل، أثناء وبعد امتحاناتهم !'
+innov.accueil.creer_compte: 'إنشاء حساب'
+innov.accueil.hderty_vous_permet: 'تمكنك من<br> 1- بحث عن امتحانات المدرسة و  <br> غيرها من اهتماماتك <br> 2- مع هاتفك النقال، بسهولة مشاركة<br> تمارين وحلول مع زملائك!<br> 3- من أجل حل جميع أنواع التمارين مباشرة على الإنترنت مع الخاص<br> الأصدقاء والتمتع بالذكاء الجماعي <br> من أجل تعلم أسرع   <br> 4- وقبل كل شيء النجاح في الامتحانات الخاصة بك'
+innov.accueil.hderty_vous_permet_conclusion: 'أصبح من السهل النجاح مع H-derty'
+innov.accueil.regarder_video: 'أنظر إلى هذا الشريط لمعرفة المزيد عن'
+innov.accueil.utile: مفيد
+innov.accueil.utile_desc: 'بحث عن الامتحانات السابقة <br> انها حاجة شائعة جدا  <br> كف عن البحث  ;<br>لقد حصلت عليها '
+innov.accueil.social: اجتماعي
+innov.accueil.social_desc1: 'لماذا تعمل وحيدا؟<br> الحياة اجتماعية في الاصل , الدراسة إجتماعية <br> الوظيفة الاجتماعية!'
+innov.accueil.social_desc2: 'كن إجتماعيا كن متفوقا !'
+innov.accueil.benefique: نافع
+innov.accueil.benefique_desc1: 'نسخ الوثائق أصبح من الماضي ,<br>تصويرها أحسن <br> إستعمال'
+innov.accueil.benefique_desc2: 'and <br> بسهولة شارك التمارين و<br> التصحيحات مع زملائك'
+innov.accueil.telecharger_mobile: 'تحميل H-derty المحمول'
+innov.accueil.hderty_partout: 'H-derty في كل مكان!'
+innov.content.listesDesGroupesTitre: 'قائمة مجموعات'
+innov.content.consulterDocGroupe_label: ' مجموعة من الوثائق '
+innov.content.consulterDocGroupe_classerPar: 'مرتب حسب '
+innov.content.consulterDocGroupe_classerPar_pertinence: ملائمة
+innov.content.consulterDocGroupe_classerPar_plus_recent: حديث
+innov.content.consulterDocGroupe_classerPar_populaire: رائج
+innov.groupe.demande_rejoindre: 'طلب الانضمام إلى هذه المجموعة'
+innov.groupe.deja_membre: 'أنت عضو في هذه المجموعة مسبقا'
+innov.aller_a_laccueil: 'العودة إلى صفحة الترحيب'
+innov.welcome: ترحيب
+innov.erreur_serveur.label: 'H-derty المحرك غير متوفرة جزئيا'
+innov.erreur_serveur.excuse: ' نعتذر عن هذا الإزعاج'
+innov.notification.label: إشعارات 
+innov.notification.accepter_demande: قبول
+innov.content.recommandations: ' يمكن أن تكون مهتمة بهذه الوثائق'
+innov.content.groupeAdminLabel: مدير
+innov.content.vouloirRejoindreGroupe: 'الانضمام إلى هذه المجموعة'
+innov.content.nombreDeMembres: '1 member| %count% members'
+innov.content.voirMembresGroupe: 'قائمة أعضاء'
+innov.content.nombreDeDocumentsPartages: '{0} 0 document shared|{1} %count% document shared | ]1,Inf]about %count% documents shared'
+innov.content.voirDocumentsGroupe: ' الولوج إلى  هذه الوثائق'
+innov.content.resultat_recherche: 'نتائج البحث عن'
+innov.content.groupe_non_trouve: 'لم يتم العثور على '
+innov.content.verif_orthographe_ou: 'إعادة الفحص الإملائي أو'
+innov.content.consulter_liste_groupe: 'الولوج إلى قائمة جميع المجموعات '
+innov.content.vouloirRejoindreGroupe2: 'لست عضوا في هذه المجموعة ! هل تريد الانضمام ؟'
+innov.register_and_login.label: تسجيل H-Derty
+innov.register_and_login.prenom: الاسم الخاص
+innov.register_and_login.prenom_place_h: اسمك الأول
+innov.register_and_login.nom: الاسم العائلي 
+innov.register_and_login.nom_place_h: اسمك  العائلي
+innov.register_and_login.email: البريد الإلكتروني
+innov.register_and_login.email_place_h: بريدك الإلكتروني
+innov.register_and_login.password:  كلمة السر
+innov.register_and_login.confirm_password: تأكيد كلمة المرور
+innov.register_and_login.creer_btn: إنشاء حساب جديد
+innov.register_and_login.deja_un_compte: هي بالفعل عضوا؟
+innov.register_and_login.nouveau: الجديد؟
+

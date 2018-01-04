@@ -1,0 +1,40 @@
+ <li id="header_notification_bar" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="#"  style="font-size:17px">
+
+                    <i class="icon-bell-alt"></i>
+                    <span class="badge bg-warning"  style="font-size:10px">{{ app.user.notifsRecus|length }}</span>
+                </a>
+         
+         
+                <ul class="dropdown-menu extended notification">
+                    <div class="notify-arrow notify-arrow-yellow"></div>
+                    <li>
+                        <p class="yellow">{{ 'innov.navbar.notification.header'|transchoice(app.user.notifsRecus|length) }}</p>
+                    </li>
+{% for notif in app.user.notifsRecus|reverse|slice(0,5) %}
+                    <li>
+                        {% if notif.typeNotif == 1 %}
+                            <a href="{{ path('InnovGroup_accepterDemandeGroupe', {'user_id': notif.auteurNotif.id, 'groupe_id': notif.groupeNotif.id} ) }}">
+                        {% else %}        
+                           <a href="#">
+                         {% endif %}
+                            <span class="label">
+                                <img src="{{ asset(notif.auteurNotif.photo.uploadDir ~ '/' ~ notif.auteurNotif.photo.id ~'.' ~ notif.auteurNotif.photo.url) }}" alt="{{ notif.auteurNotif.photo.alt }}" height="29" width="29">                            
+                            </span>
+                                {{ notif.auteurNotif.prenom ~' '~notif.auteurNotif.nom  }} {{ notif.contenu|trans }} {{ notif.groupeNotif.nom }}
+                                
+                            <span class="small italic">
+                               <br> <i class= "icon-time"></i>{{ notif.dateNotif|date("d/m/Y - H:i:s") }}
+                            {% if notif.typeNotif == 1 %}
+                            <button class="btn btn-xs btn-success ">  <i class="icon-long-arrow-right"></i> {{ 'innov.notification.accepter_demande'|trans }}  </button> 
+                                {% endif %}
+                            </span>
+                        </a>
+                    </li>
+{% endfor %}
+
+                    <li>
+                        <a href="{{ path('InnovGroup_voirToutesMesNotifs') }}"><i class=" icon-long-arrow-right"></i>  {{ 'innov.navbar.notification.footer'|trans }}</a>
+                    </li>
+                </ul>
+ </li>

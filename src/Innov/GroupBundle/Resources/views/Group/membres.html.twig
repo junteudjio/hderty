@@ -1,0 +1,68 @@
+{% extends "InnovGroupBundle::layout.html.twig" %}
+
+
+
+   {% block infoGroupe %}
+        {% if   user_is_member == true %}
+            <div class="row">               
+    <div class="col-lg-7" style="padding-right:0;">
+        <section class="panel">
+            <div class="panel-body" style="padding:6px;">
+                <ul class="summary-list" style="">
+                    <li>
+                        <a href="{{ path('InnovGroup_entrerGroupe', {'id': groupe.id }) }}">
+                            <i class=" icon-globe text-primary"></i>
+                                                  {{ groupe.nom }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('InnovGroup_voirMembres', {'id': groupe.id }) }}" >
+                            <i class="icon-group text-primary"></i>
+                                               {{ 'innov.groupe.voir_membres'|transchoice(groupe.membres|length) }}
+                        </a>
+                    </li>
+                    <li>
+                          
+                            <a data-fancybox-type="iframe" id="fancyAjout" href="{{ path("InnovGroup_ajoutMembre", {'id': groupe.id})  }}" >
+                              <i class=" icon-user text-primary"></i>
+                              {{ 'innov.groupe.form_ajout_membre_label'|trans }} </a>
+                    </li>
+                  </ul>
+                    
+            
+            </div>
+        </section>
+          
+            
+                
+    </div>
+</div>
+        {% endif %}
+   {% endblock %}
+
+
+{% block content %}  
+
+
+
+<br/><br/>
+<div class="col-lg-7" style="padding-right:0;">
+<div class="panel">
+                          <div class="panel-body">
+                              {% for membre in groupe.membres %}
+                                <a   href="{{ path('InnovGroup_voirProfil', {'id':membre.id}) }} ">
+                                                <img src="{{ asset(membre.photo.uploadDir ~ '/' ~ membre.photo.id ~'.' ~ membre.photo.url) }}" alt="{{ membre.photo.alt }}" height="29" width="29">
+                                                     <span class="username">{{ membre.nom ~ ' ' ~ membre.prenom }}</span>
+                                                
+                                </a>
+                              <br><hr>
+                              
+                              {% endfor %}
+                          </div>
+                      </div>
+</div>
+
+{% endblock %}
+
+
+

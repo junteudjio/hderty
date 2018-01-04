@@ -1,0 +1,54 @@
+{# empty Twig template #}
+{% extends "::layout.html.twig" %}
+
+
+
+{% block content %}
+   
+<div class="col-lg-8">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              {{ 'innov.notification.label'|trans }}
+                              
+                          </header>
+                          <div class="panel-body profile-activity">
+                              {% for notif in mesNotifs|reverse %}
+                              
+                                  {% if loop.index0 % 2 == 0 %}
+                               <div class="activity terques">
+                                   {% else %}
+                                <div class="activity alt green"> 
+                                    {% endif %}
+                                  <span>
+                                     <img src="{{ asset(notif.auteurNotif.photo.uploadDir ~ '/' ~ notif.auteurNotif.photo.id ~'.' ~ notif.auteurNotif.photo.url) }}" alt="{{ notif.auteurNotif.photo.alt }}" height="29" width="29">                            
+                                  </span>
+                                  <div class="activity-desk">
+                                      <div class="panel">
+                                          <div class="panel-body">
+                                              <div class="arrow"></div>
+                                              <i class=" icon-time"></i>
+                                              <h4>{{ notif.dateNotif|date("d/m/Y - H:i:s") }}</h4>
+                                              <p>
+                                                     {{ notif.auteurNotif.prenom ~' '~notif.auteurNotif.nom  }} {{ notif.contenu|trans }} {{ notif.groupeNotif.nom }}
+                                                      {% if notif.typeNotif == 1 %}
+                                                      <br><a href="{{ path('InnovGroup_accepterDemandeGroupe', {'user_id': notif.auteurNotif.id, 'groupe_id': notif.groupeNotif.id} ) }}">
+                                                          {{ 'innov.notification.accepter_demande'|trans }}
+                                                      </a><i class="icon-long-arrow-right"></i>
+                                                      {% endif %}
+                                              </p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              
+                              {% endfor %}
+                              
+                             
+
+                          </div>
+                      </section>
+                  </div>
+{% endblock %}
+
+

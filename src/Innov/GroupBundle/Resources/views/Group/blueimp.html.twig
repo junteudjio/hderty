@@ -1,0 +1,12 @@
+<script type="text/javascript" src="{{ asset('http://code.jquery.com/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('metronic/scripts/blueimp/jquery.ui.widget.js') }}"></script>
+<script type="text/javascript" src="{{ asset('metronic/scripts/blueimp/jquery.iframe-transport.js') }}"></script>
+<script type="text/javascript" src="{{ asset('metronic/scripts/blueimp/jquery.fileupload.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $('#fileupload').fileupload({});
+});
+</script>
+
+<input id="fileupload" type="file" name="files[]" data-url="{{ oneup_uploader_endpoint('gallery') }}" multiple />

@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+      <meta name="language" content="en-US">
+      <meta name="description" content="Enregistrement Hderty">
+      <meta name="viewport" content="maximum-scale=1.0,width=device-width,initial-scale=1.0">
+      <title>H-Derty</title>
+      <link rel="stylesheet" href="https://d2k1ftgv7pobq7.cloudfront.net/css/039c30122fea58e277c9ac89c3d91ba8/core.css">
+      
+     
+   </head>
+   <body class="account-page">
+   
+      <div id="surface" style="max-width:400px;">
+         <div class="account-header"> <img alt="Hderty logo" src="{{ asset('img/logo1.png') }}"> </div>
+         <div class="account-content clearfix">
+            <form style="margin:auto;float:none;" action="{{ path("fos_user_registration_register") }}" method="post" class="primary-col clearfix js-emailpassword" novalidate {{ form_enctype(form) }}>
+               <h2 align="center">{{ 'innov.register_and_login.label'|trans   }}</h2>
+               <br>
+               <label for="display-name-create"> {{ 'innov.register_and_login.prenom'|trans   }} </label>
+               {{ form_widget(form.prenom, { 'attr': {'type': 'text','id': 'display-name-create', 'tabindex':'1' , 'placeholder': 'innov.register_and_login.prenom_place_h'|trans } } ) }}
+               <p class="hide error js-email-as-name" style="padding-bottom: 16px;">  {{ form_errors(form.prenom) }} </p>
+
+               <label for="display-name-create"> {{ 'innov.register_and_login.nom'|trans   }}</label>
+               {{ form_widget(form.nom, { 'attr': {'type': 'text','id': 'display-name-create', 'tabindex':'1' , 'placeholder': 'innov.register_and_login.nom_place_h'|trans } } ) }}
+               <p class="hide error js-email-as-name" style="padding-bottom: 16px;">  {{ form_errors(form.nom) }} </p>
+
+               <label for="email-create"> {{ 'innov.register_and_login.email'|trans   }} </label> 
+               {{ form_widget(form.email, { 'attr': {'type': 'email','id': 'email-create', 'value':'', "autocomplete":"off", "autocorrect":"off", "spellcheck":"false" , "autocapitalize":"off" , 'placeholder': 'innov.register_and_login.email_place_h'|trans } } ) }}
+               <p class="hide error js-email-as-name" style="padding-bottom: 16px;">  {{ form_errors(form.email) }} </p>
+
+               
+               <label for="password-create"> {{ 'innov.register_and_login.password'|trans   }} </label>
+               {{ form_widget(form.plainPassword.first, { 'attr': {'type': 'password','id': 'password-create'} } ) }}
+               <p class="hide error js-email-as-name" style="padding-bottom: 16px;">  {{ form_errors(form.plainPassword.first) }} </p>
+   
+                <label for="password-create"> {{ 'innov.register_and_login.confirm_password'|trans   }} </label>
+               {{ form_widget(form.plainPassword.second, { 'attr': {'type': 'password','id': 'password-create'} } ) }}               
+               <p class="hide error js-email-as-name" style="padding-bottom: 16px;">  {{ form_errors(form.plainPassword.second) }} </p>
+
+               <input type="submit" class="primary" value="{{ 'innov.register_and_login.creer_btn'|trans   }}">  
+               
+               <p class="quiet clear"> {{ 'innov.register_and_login.deja_un_compte'|trans   }} <a href="{{ path("InnovGroup_index") }}"><strong>{{ 'innov.accueil.login'|trans  }}</strong></a> </p>
+               <input type="hidden" name="returnUrl" value="/"> <input type="hidden" name="source" value=""> 
+               {{ form_rest(form) }}
+            </form>
+
+         </div>
+         {#
+         <p class="clear center quiet" style="margin-top: 10px;"> By signing up, you agree to our <a href="/privacy" target="_blank">Privacy Policy</a> and <a href="/legal" target="_blank">Terms of Service</a>. </p> #}
+      </div>
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50958847-1', 'h-derty.com');
+  ga('send', 'pageview');
+
+</script>
+   </body>
+</html>

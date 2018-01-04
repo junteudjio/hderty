@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
+Version: 2.0.2
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />{% block titre %}
+    <title>H-Derty</title>
+    {% endblock %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    
+    {% block flatlab %}
+    <link href="{{ asset('flatlab/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('flatlab/css/bootstrap-reset.css') }}" rel="stylesheet">
+    <!--external css-->
+    <link href="{{ asset('flatlab/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('flatlab/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('flatlab/css/style-responsive.css') }}" rel="stylesheet" />
+    {% endblock %}
+    
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="{{ asset('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('metronic/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('metronic/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('metronic/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    
+    <!-- BEGIN SEARCH AUTO COMPLETION STYLE  -->
+    <link href="{{ asset('metronic/plugins/typeahead/typeahead.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END SEARCH AUTO COMPLETION STYLE -->
+
+    <!-- BEGIN THEME STYLES -->
+    <link href="{{ asset('metronic/css/style-metronic.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('metronic/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('metronic/css/style-responsive.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('metronic/css/plugins.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('metronic/css/themes/default.css') }}" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="{{ asset('metronic/css/custom.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+
+    {% block cssModal %}
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="{{ asset('metronic/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('metronic/plugins/bootstrap-modal/css/bootstrap-modal.css') }}" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    {% endblock %} 
+
+{% block cssFileUpload %}
+    <link href="{{ asset('metronic/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('metronic/plugins/jquery-file-upload/css/jquery.fileupload.css') }}" rel="stylesheet" />
+    <link href="{{ asset('metronic/plugins/jquery-file-upload/css/jquery.fileupload-ui.css') }}" rel="stylesheet" />
+{% endblock %}
+
+ {% block cssTree_and_file %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('metronic/plugins/jstree/dist/themes/default/style.min.css') }}" />
+{% endblock %}
+    <link rel="shortcut icon" href="favicon.ico" />
+    
+    <link href="{{ asset('metronic/plugins/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet" />
+    
+
+    
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed page-sidebar-reversed">
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-fixed-top">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        {% block navbar %}
+        <div class="header-inner">
+            <!-- BEGIN LOGO -->
+            <a class="navbar-brand" href="index.html">
+                <img src="{{ asset('metronic/img/logo.png') }}" alt="logo" class="img-responsive" />
+            </a>
+            <!-- END LOGO -->
+            <form class="search-form" role="form" action="index.html">
+                <input id="Search_box" class="form-control input-medium input-sm" name="query" placeholder="Search..." type="text">
+                <input class="submit" value=" " type="button">
+            </form>
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <img src="{{ asset('metronic/img/menu-toggler.png') }}" alt="" />
+            </a>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <ul class="nav navbar-nav pull-right">
+                <!-- BEGIN NOTIFICATION DROPDOWN -->
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li class="dropdown" id="header_notification_bar">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <i class="fa fa-warning"></i>
+                        <span class="badge">
+                            {{ app.user.notifsRecus|length }}
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu extended notification">
+                        <li>
+                            <p>
+                                vous avez reçu {{ app.user.notifsRecus|length }} notifications
+                            </p>
+                        </li>
+                        <li>
+                            <ul class="dropdown-menu-list scroller" style="height: 250px;">
+                                {% for notif in app.user.notifsRecus %}
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-icon label-success">
+                                            <i class="fa fa-plus"></i>
+                                        </span>
+                                        {{ notif.auteurNotif.nom }} {{ notif.contenu }}
+                                        <span class="time">
+                                            {{ notif.dateNotif|date("m/d/Y") }}
+                                        </span>
+                                    </a>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </li>
+                        <li class="external">
+                            <a href="#">
+                                See all notifications
+                                <i class="m-icon-swapright"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- END NOTIFICATION DROPDOWN -->
+                <!-- BEGIN INBOX DROPDOWN -->
+                <li class="dropdown" id="header_inbox_bar">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge">
+                            {{ app.user.mesDiscussions|length }}
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <li>
+                            <p>
+                                vous avez reçus {{ app.user.mesDiscussions|length }} messages
+                            </p>
+                        </li>
+                        <li>
+                            <ul class="dropdown-menu-list scroller" style="height: 250px;">
+                                {% for message in app.user.mesDiscussions %}
+                                <li>
+                                    <a href="inbox.html?a=view">
+                                        <span class="photo">
+                                            <img src="{{ asset(message.emetteur.photo.uploadDir ~ '/' ~ message.emetteur.photo.id ~'.' ~ message.emetteur.photo.url) }}" alt="{{ message.emetteur.photo.alt }}" height="29" width="29">
+                                        </span>
+                                        <span class="subject">
+                                            <span class="from">
+                                                {{ message.emtteur.nom ~ message.emetteur.prenom }}
+                                            </span>
+                                            <span class="time">
+                                                {{ message.dateMessage|date("m/d/Y") }}
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            {{ mesage.message }}
+                                        </span>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="external">
+                            <a href="inbox.html">
+                                See all messages
+                                <i class="m-icon-swapright"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- END INBOX DROPDOWN -->
+                <!-- BEGIN TODO DROPDOWN -->
+                <li class="dropdown" id="header_task_bar">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <i class="fa fa-tasks"></i>
+                        <span class="badge">
+                            5
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks">
+                        <li>
+                            <p>
+                                You have 12 pending tasks
+                            </p>
+                        </li>
+                        <li>
+                            <ul class="dropdown-menu-list scroller" style="height: 250px;">
+                                <li>
+                                    <a href="#">
+                                        <span class="task">
+                                            <span class="desc">
+                                                New release v1.2
+                                            </span>
+                                            <span class="percent">
+                                                30%
+                                            </span>
+                                        </span>
+                                        <span class="progress">
+                                            <span style="width: 40%;" class="progress-bar progress-bar-success" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">
+                                                    40% Complete
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task">
+                                            <span class="desc">
+                                                Application deployment
+                                            </span>
+                                            <span class="percent">
+                                                65%
+                                            </span>
+                                        </span>
+                                        <span class="progress progress-striped">
+                                            <span style="width: 65%;" class="progress-bar progress-bar-danger" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">
+                                                    65% Complete
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task">
+                                            <span class="desc">
+                                                Mobile app release
+                                            </span>
+                                            <span class="percent">
+                                                98%
+                                            </span>
+                                        </span>
+                                        <span class="progress">
+                                            <span style="width: 98%;" class="progress-bar progress-bar-success" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">
+                                                    98% Complete
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task">
+                                            <span class="desc">
+                                                Database migration
+                                            </span>
+                                            <span class="percent">
+                                                10%
+                                            </span>
+                                        </span>
+                                        <span class="progress progress-striped">
+                                            <span style="width: 10%;" class="progress-bar progress-bar-warning" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">
+                                                    10% Complete
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task">
+                                            <span class="desc">
+                                                Web server upgrade
+                                            </span>
+                                            <span class="percent">
+                                                58%
+                                            </span>
+                                        </span>
+                                        <span class="progress progress-striped">
+                                            <span style="width: 58%;" class="progress-bar progress-bar-info" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">
+                                                    58% Complete
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task">
+                                            <span class="desc">
+                                                Mobile development
+                                            </span>
+                                            <span class="percent">
+                                                85%
+                                            </span>
+                                        </span>
+                                        <span class="progress progress-striped">
+                                            <span style="width: 85%;" class="progress-bar progress-bar-success" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">
+                                                    85% Complete
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task">
+                                            <span class="desc">
+                                                New UI release
+                                            </span>
+                                            <span class="percent">
+                                                18%
+                                            </span>
+                                        </span>
+                                        <span class="progress progress-striped">
+                                            <span style="width: 18%;" class="progress-bar progress-bar-important" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">
+                                                    18% Complete
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="external">
+                            <a href="#">
+                                See all tasks
+                                <i class="m-icon-swapright"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- END TODO DROPDOWN -->
+                <!-- BEGIN USER LOGIN DROPDOWN -->
+                <li class="dropdown user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img src="{{ asset(app.user.photo.uploadDir ~ '/' ~ app.user.photo.id ~'.' ~ app.user.photo.url) }}" alt="{{ app.user.photo.alt }}" height="29" width="29">
+                        <span class="username">
+                            {{ app.user.nom ~ ' ' ~ app.user.prenom }}
+                        </span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="extra_profile.html">
+                                <i class="fa fa-user"></i>My Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="page_calendar.html">
+                                <i class="fa fa-calendar"></i>My Calendar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="inbox.html">
+                                <i class="fa fa-envelope"></i>My Inbox
+                                <span class="badge badge-danger">
+                                    3
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>My Tasks
+                                <span class="badge badge-success">
+                                    7
+                                </span>
+                            </a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="trigger_fullscreen">
+                                <i class="fa fa-arrows"></i>Full Screen
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra_lock.html">
+                                <i class="fa fa-lock"></i>Lock Screen
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-key"></i>Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+                <!-- END USER LOGIN DROPDOWN -->
+            </ul>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        {% endblock %}
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <!-- END HEADER -->
+    <div class="clearfix">
+    </div>
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        <!-- BEGIN SIDEBAR -->
+        {% block sidebar %}
+        <div class="page-sidebar-wrapper">
+            <div class="page-sidebar navbar-collapse collapse">
+                <!-- BEGIN SIDEBAR MENU -->
+                <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+                    <li class="sidebar-toggler-wrapper">
+                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                        <div class="sidebar-toggler hidden-phone">
+                        </div>
+                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                    </li>
+                    <li class="sidebar-search-wrapper">
+                        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                        <form class="sidebar-search" action="extra_search.html" method="POST">
+                            <div class="form-container">
+                                <div class="input-box">
+                                    <a href="javascript:;" class="remove">
+                                    </a>
+                                    <input type="text" placeholder="retrouver un groupe" />
+                                    <input type="button" class="submit" value=" " />
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END RESPONSIVE QUICK SEARCH FORM -->
+                    </li>
+                    <li class="start ">
+                        <a data-toggle="modal" href="#responsive">
+                            <i class="fa fa-home"></i>
+                            <span class="title">
+                                Creer un Groupe
+                                     <!--  DEBUT  formulaire de type modal pour creation d'un groupe -->
+                                    {{ render(controller("InnovGroupBundle:Group:creerGroupe")) }}
+                                    <!-- fin  formulaire de type modal pour creation de groupe -->
+
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        {% include "InnovGroupBundle:Group:mesGroupes.html.twig" %}
+                    </li>
+
+                    <li class="last ">
+                        <a href="charts.html">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span class="title">
+                                Discussion Instantannée
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- END SIDEBAR MENU -->
+            </div>
+        </div>
+        {% endblock %}
+        <!-- END SIDEBAR -->
+        <!-- BEGIN CONTENT -->
+
+        
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                    {% block espacePerso %}
+                    <!-- BEGIN STYLE CUSTOMIZER -->
+                    <div class="theme-panel hidden-xs hidden-sm">
+                        <div class="toggler">
+                        </div>
+                        <div class="toggler-close">
+                        </div>
+                        <div class="theme-options">
+                            <div class="theme-option theme-colors clearfix">
+                                <span>
+                                    Espace Perso
+                                </span>
+                                </br>
+                                <input type="text" id="ajout">
+                                <a id="ajoutDossier" href="#" class="btn green">
+                                    Add folder
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                                </br>
+                                <div>
+
+                                    <div id='dossierPerso'>
+                                        {% include "InnovGroupBundle:Group:EspacePerso.html.twig" %}
+                                    </div>
+                                    </br>
+
+                                </div>
+                                <br/>
+                                <br/>
+
+                                <!-- include du formulaire d'upload des CC -->
+                                <a data-fancybox-type="iframe" id="fancy-upload" href="{{ path("InnovGroup_test") }}">
+                                    <i class="fa fa-home"></i>
+                                    <span class="title">
+                                        uploader vos CCs
+                                    </span>
+                                </a>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- END STYLE CUSTOMIZER -->
+                    {% endblock espacePerso %}
+                    
+                    
+                    {% block contenu %}
+                    <!-- BEGIN PAGE HEADER-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                            <h3 class="page-title">
+                                Blank Page
+                                <small>blank page</small>
+                            </h3>
+                            <ul class="page-breadcrumb breadcrumb">
+                                <li class="btn-group">
+                                    <button type="button" class="btn blue dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+                                        <span>
+                                            Actions
+                                        </span>
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a href="#">
+                                                Action
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Another action
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Something else here
+                                            </a>
+                                        </li>
+                                        <li class="divider">
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Separated link
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <i class="fa fa-home"></i>
+                                    <a href="index.html">
+                                        Home
+                                    </a>
+                                    <i class="fa fa-angle-right"></i>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Page Layouts
+                                    </a>
+                                    <i class="fa fa-angle-right"></i>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Blank Page
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- END PAGE TITLE & BREADCRUMB-->
+                        </div>
+                    </div>
+                    <!-- END PAGE HEADER-->
+                    <!-- BEGIN PAGE CONTENT-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            Page content goes here
+                        </div>
+                    </div>
+                    <!-- END PAGE CONTENT-->
+                    
+                    {% endblock contenu %}
+           </div>
+       </div>
+            
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+
+        {% block footer %}
+        <div class="footer">
+            <div class="footer-inner">
+                2014 &copy; Metronic by keenthemes.
+            </div>
+            <div class="footer-tools">
+                <span class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </span>
+            </div>
+        </div>
+        {% endblock footer %}
+        <!-- END FOOTER -->
+        <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+        {% block javascript %}
+
+        <!-- BEGIN CORE PLUGINS -->
+
+        <script src="{{ asset('metronic/plugins/jquery-1.10.2.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery-migrate-1.2.1.min.js') }}" type="text/javascript"></script>
+        <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js') }} before bootstrap.min.js') }} to fix bootstrap tooltip conflict with jquery ui tooltip -->
+        <script src="{{ asset('metronic/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery.cokie.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/uniform/jquery.uniform.min.js') }}" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <script src="{{ asset('metronic/scripts/core/app.js') }}"></script>
+        {% endblock javascript %}
+        <!-- END JAVASCRIPTS -->
+
+
+        {% block jsFileUpload %}
+        <!-- BEGIN CORE PLUGINS -->
+        <!--[if lt IE 9]>
+    <script src="{{ asset('metronic/plugins/respond.min.js') }}"></script>
+    <script src="{{ asset('metronic/plugins/excanvas.min.js') }}"></script> 
+    <![endif]-->
+        <script src="{{ asset('metronic/plugins/jquery-1.10.2.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery-migrate-1.2.1.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery.cokie.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/uniform/jquery.uniform.min.js') }}" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="{{ asset('metronic/plugins/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+        <!-- END PAGE LEVEL PLUGINS-->
+        <!-- BEGIN:File Upload Plugin JS files-->
+        <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+        <!-- The Templates plugin is included to render the upload/download listings -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/vendor/tmpl.min.js') }}"></script>
+        <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/vendor/load-image.min.js') }}"></script>
+        <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js') }}"></script>
+        <!-- blueimp Gallery script -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js') }}"></script>
+        <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/jquery.iframe-transport.js') }}"></script>
+        <!-- The basic File Upload plugin -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/jquery.fileupload.js') }}"></script>
+        <!-- The File Upload processing plugin -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/jquery.fileupload-process.js') }}"></script>
+        <!-- The File Upload image preview & resize plugin -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/jquery.fileupload-image.js') }}"></script>
+        <!-- The File Upload audio preview plugin -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/jquery.fileupload-audio.js') }}"></script>
+        <!-- The File Upload video preview plugin -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/jquery.fileupload-video.js') }}"></script>
+        <!-- The File Upload validation plugin -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/jquery.fileupload-validate.js') }}"></script>
+        <!-- The File Upload user interface plugin -->
+        <script src="{{ asset('metronic/plugins/jquery-file-upload/js/jquery.fileupload-ui.js') }}"></script>
+        <!-- The main application script -->
+        <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+        <!--[if (gte IE 8)&(lt IE 10)]>
+    <script src="{{ asset('metronic/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js') }}"></script>
+    <![endif]-->
+        <!-- END:File Upload Plugin JS files-->
+        <script src="{{ asset('metronic/scripts/core/app.js') }}"></script>
+        <script src="{{ asset('metronic/scripts/custom/form-fileupload.js') }}"></script>
+        {% endblock jsFileUpload %} {% block jsModal %}
+        <script src="{{ asset('metronic/plugins/bootstrap-modal/js/bootstrap-modalmanager.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap-modal/js/bootstrap-modal.js') }}" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="{{ asset('metronic/scripts/core/app.js') }}"></script>
+        <script src="{{ asset('metronic/scripts/custom/ui-extended-modals.js') }}"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN SEARCH AUTO COMPLETE SCRIPTS -->
+        <script src="{{ asset('metronic/plugins/typeahead/handlebars.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/typeahead/typeahead.min.js') }}" type="text/javascript"></script>
+        <!-- END SEARCH AUTOCOMPLETE SCRIPTS -->
+
+        {% endblock jsModal %} {% block fileUp_and_tree %}
+        <script src="{{ asset('metronic/plugins/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+        <script src="{{ asset('metronic/plugins/jstree/dist/jstree.min.js') }}"></script>
+        <script src="{{ asset('metronic/scripts/custom/ui-tree.js') }}"></script>
+        
+        <!-- END PAGE LEVEL PLUGINS-->
+        {% endblock %}
+
+        <script>
+            jQuery(document).ready(function() {
+                App.init();
+                UIExtendedModals.init(); // ça c'est pour le modal
+                UITree.init(); 
+                // ça c'est pour le tree
+                //FormFileUpload.init(); // celui là c'est pour l'upload
+                //$('#fileupload').fileupload({});
+
+                var test = $('.theme-panel');
+                $(document.body).click(function(e) {
+                    // Si ce n'est pas #test ni un de ses enfants
+                    if (!$(e.target).is(test) && !$.contains(test[0], e.target)) {
+
+                        $('.toggler-close').click();
+
+                    }
+
+                });
+
+                $("#ajoutDossier").click(function() {
+
+                    var nom_dossier = $("#ajout").val();
+                    $.ajax({
+                        url: "{{ path('InnovGroup_creerSousDossierPerso')}}",
+                        type: 'POST',
+                        data: {
+                            sousDP: nom_dossier
+                        },
+
+                        success: function(resultat) {
+                            $('#tree_1').jstree('destroy');
+                            $('#dossierPerso').html(resultat);
+                            UITree.init();
+                        }
+                    });
+
+
+                });
+                
+                
+                /* AUTO COMPLETION */
+                var numbers = new Bloodhound({
+                    datumTokenizer: function(d) {
+                        return Bloodhound.tokenizers.whitespace(d.text);
+                    },
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: "{{ path('InnovGroup_rechercheAutoComplete') }}?query=%QUERY"
+                });
+
+                // initialize the bloodhound suggestion engine
+                numbers.initialize();
+
+                // instantiate the typeahead UI
+                $('#Search_box').typeahead(null, {
+                    displayKey: 'text',
+                    hint: (App.isRTL() ? false : true),
+                    source: numbers.ttAdapter()
+                });
+               
+               $("#fancy-upload").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: false,
+		width		: '70%',
+		height		: '70%',
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none',
+                afterClose       : function(){
+                    alert('test');
+                    $.ajax({
+                            
+                            url : "{{ path('InnovGroup_renderJsTree')}}",
+                           type : 'POST',
+                           success : function(resultat){
+                                             $('#tree_1').jstree('destroy');
+                                           $('#dossierPerso').html(resultat);
+                                         UITree.init();
+                                         }
+                           });
+                           
+                           }
+	});
+        
+        
+            
+
+            
+
+            });
+
+            var urlUpload = "{{ path('InnovGroup_test') }}"; // begin 
+            var urlSwitcher = "{{ path('InnovGroup_switcher') }}";
+            var urlVisionner = "{{ path('InnovGroup_visionnerDoc') }}";
+            var urlDeletePerso = "{{ path('InnovGroup_deletePerso') }}";
+        </script>
+        
+
+
+</body>
+<!-- END BODY -->
+
+</html>

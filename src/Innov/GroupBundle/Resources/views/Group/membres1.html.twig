@@ -1,0 +1,23 @@
+{% extends "InnovGroupBundle::layout.html.twig" %}
+
+{% block content %}  
+
+
+
+<br/><br/>
+<div class="panel">
+                          <div class="panel-body">
+                              {% for membre in groupe.membres %}
+                                <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" href="{{ path('InnovGroup_voirProfil', {'id':membre.id}) }} ">
+                                                <img src="{{ asset(membre.photo.uploadDir ~ '/' ~ membre.photo.id ~'.' ~ membre.photo.url) }}" alt="{{ membre.photo.alt }}" height="29" width="29"
+                                                     <span class="username">{{ membre.nom ~ ' ' ~ membre.prenom }}</span>
+                                                <b class="caret"></b>
+                                </a>
+                              {% endfor %}
+                          </div>
+                      </div>
+
+{% endblock %}
+
+
+

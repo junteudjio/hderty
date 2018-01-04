@@ -1,0 +1,130 @@
+{# empty Twig template #}
+{% extends "::layout.html.twig" %}
+
+
+{# s'il n'est pas membre du groupe il n'a pas le droit de voir les infos de ce groupe #}
+
+   {% block infoGroupe %}
+        {% if   user_is_member == true %}
+            <div class="row">               
+    <div class="col-lg-7" style="padding-right:0;">
+        <section class="panel">
+            <div class="panel-body" style="padding:6px;">
+                <ul class="summary-list" style="">
+                    <li>
+                        <a href="{{ path('InnovGroup_entrerGroupe', {'id': groupe.id }) }}">
+                            <i class=" icon-globe text-primary"></i>
+                                                  {{ groupe.nom }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('InnovGroup_voirMembres', {'id': groupe.id }) }}" >
+                            <i class="icon-group text-primary"></i>
+                                               {{ 'innov.groupe.voir_membres'|transchoice(groupe.membres|length) }}
+                        </a>
+                    </li>
+                    <li>
+                        <a data-fancybox-type="iframe" id="fancyAjout" href="{{ path("InnovGroup_ajoutMembre", {'id': groupe.id})  }}" >
+                              <i class=" icon-user text-primary"></i></i>
+                              {{ 'innov.groupe.form_ajout_membre_label'|trans }} </a>
+                    </li>
+                  </ul>
+                    
+            
+            </div>
+        </section>
+          
+            
+                
+    </div>
+</div>
+        {% endif %}
+   {% endblock %}
+
+{% block content %}
+    <div class="col-lg-7">
+    <section class="panel">
+                          <header class="panel-heading">
+                              {{ 'innov.content.consulterDocGroupe_label'|trans }}: {{ groupe.nom }}
+                              
+                              {{ 'innov.content.consulterDocGroupe_classerPar'|trans }} :<br>
+                              <a href="{{ path('innovGroup_consulterDocGroupe', {'id': groupe.id, 'sort_mode': 'pertinence'}) }}">{{ 'innov.content.consulterDocGroupe_classerPar_pertinence'|trans }} </a><br> 
+                              <a href="{{ path('innovGroup_consulterDocGroupe', {'id': groupe.id, 'sort_mode': 'plus_recent'}) }}"> {{ 'innov.content.consulterDocGroupe_classerPar_plus_recent'|trans }} </a><br> 
+                              <a href="{{ path('innovGroup_consulterDocGroupe', {'id': groupe.id, 'sort_mode': 'populaire'}) }}"> {{ 'innov.content.consulterDocGroupe_classerPar_populaire'|trans }} </a><br> 
+                                
+                              
+                          </header>
+                          <ul class="list-group">
+                              {% for doc in docs %}
+                                  <li class="list-group-item">
+                                     <div class="panel-body">
+                                        <div>
+                                            <i class="icon-file"></i>
+                                        </div>
+                                        <br>
+                                            <div class="task-thumb-details" style="margin-left:50px;">
+                                            <h1 style="float:left;">
+                                           {% if doc.toString starts with 'examCo' %}     
+                                                        {% set url = 'visionPublicExCo__'~doc.id~'*' %}   
+                                                      {% for doc in similaires[doc.idSolr] %}
+                                                                
+                                                                  {% set url = url~doc.idSolr~'*' %}
+                                                              
+                                                       {% endfor %}
+                                                <a id="{{ url }}" class="visionPublic" href="#">{{ doc.titre }} <img src="{{ asset('img/voir.png') }}" width="20" height="20"></a>
+                                            {% endif %}
+                                                    
+                                                    
+                                           {% if doc.toString starts with 'document' %}   
+                                                    
+                                                 {% set url = 'visionPublicDoc__'~doc.id~'*' %} 
+                                                    
+                                                      {% for doc in similaires[doc.idSolr] %}
+                                                    
+                                                        
+                                                                  {% set url = url~doc.idSolr~'*' %}
+                                                           
+                                                                
+                                                       {% endfor %}
+                                                  
+                                                <a id="{{ url }}" class="visionPublic" href="#">{{ doc.titre }} <img src="{{ asset('img/voir.png') }}" width="20" height="20"></a>
+                                           {% endif %}
+                                            
+                                            
+                                             </h1>
+                                            
+                                            
+                                            </div> 
+                                        
+                                            <br><br><br>
+                                       <div>
+                                           <a href="#">{{ 'innov.groupe.jaime'|trans }}</a>&nbsp;.&nbsp;
+                                           <a href="#">{{ 'innov.groupe.commenter'|trans }}</a>&nbsp;.&nbsp;
+                                           <a href="#" style="margin-right:160px;">
+                                            
+                                            <i class="icon-thumbs-up btn-xs text-info"></i>{{ doc.nbreJaime }}
+                                           
+                                       {% if doc.toString starts with 'examCo' %}   
+                                            <i class="icon-comments btn-xs text-info"></i>{{ doc.commentaires|length }}
+                                       {% endif %}
+                                           </a>
+                                           {% if doc.toString starts with 'document' %}
+                                                <a href="javascript:;" id="{{ 'favorisDoc_'~doc.id }}" class="favoris"> <i class="icon-star  text-warning"></i></a>
+                                           {% endif %}
+                                           {% if doc.toString starts with 'examCo' %}                                                
+                                                <a href="javascript:;" id="{{ 'favorisExamCo_'~doc.id }}" class="favoris"> <i class="icon-star  text-warning"></i></a>
+                                           {% endif %}     
+                                                <!-- Tags here -->
+                                        </div>    
+                                    </div>
+
+                                  </li>
+                              {% endfor %}
+                          
+                                 
+                          </ul>
+  </section>
+            </div>
+{% endblock %}
+
+

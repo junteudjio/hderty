@@ -1,0 +1,137 @@
+<html lang="en" >
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+    <head>
+        <meta charset="utf-8"/>
+        <title>H-Derty Login</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('metronic/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('metronic/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('metronic/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css"/>
+        <!-- END GLOBAL MANDATORY STYLES -->
+
+        <link href="{{ asset('metronic/css/style-metronic.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/css/style.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/css/style-responsive.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/css/plugins.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/css/themes/default.css') }}" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="{{ asset('metronic/css/custom.css') }}" rel="stylesheet" type="text/css" />
+
+
+        <!-- BEGIN PAGE LEVEL STYLES -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('metronic/plugins/select2/select2.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('metronic/plugins/select2/select2-metronic.css') }}"/>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME STYLES -->
+        <link href="{{ asset('metronic/plugins/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/plugins/select2/select2-metronic.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic/plugins/jquery-multi-select/css/multi-select.css') }}" rel="stylesheet" type="text/css" />
+
+        <!-- END THEME STYLES -->
+        <link rel="shortcut icon" href="favicon.ico"/>
+    </head>
+
+ <body> 
+     
+     <div class="page-content" style="background-color:ghostwhite">
+                <div class="row">
+                       <div class="col-md-12">
+     
+<form id="formform" style="margin:8px;" method="POST" action="{{ path('InnovGroup_ajoutMembre', {'id': groupe.id }) }}">
+   
+    <div class="form-group">   
+                        <h4>{{ form_label(form.membres, 'innov.groupe.form_ajout_membre_label'|trans) }}</h4>
+ {{ form_widget(form.membres, { 'attr': { 'class': 'form-control select2', 'name':'membres'} }) }}
+                         <span class="help-block" >                            
+                        {{ form_errors(form.membres) }}
+                         </span>
+                        <span id="error" style="display:none;color:red;">
+                            Champ vide
+                        </span>
+                    </div>
+     
+    
+ 
+       {{ form_rest(form) }} 										
+     <div>
+									<a class="btn blue" id="submit1">Ajouter</a>
+									
+								</div>
+ </form>
+                       </div>
+                </div>
+     </div>
+     
+      <script src="{{ asset('metronic/plugins/jquery-1.10.2.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery-migrate-1.2.1.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+        <!--[if lt IE 9]>
+            <script src="{{ asset('metronic/plugins/respond.min.js') }}"></script>
+            <script src="{{ asset('metronic/plugins/excanvas.min.js') }}"></script> 
+            <![endif]-->
+
+
+        <![endif]-->
+        <!-- END:File Upload Plugin JS files-->
+
+        <script src="{{ asset('metronic/plugins/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+        <script src="{{ asset('metronic/plugins/fancybox/source/jquery.fancybox.js') }}"></script>
+
+
+
+        <!-- plugins pour le multi select -->
+        <script type="text/javascript" src="{{ asset('metronic/plugins/bootstrap-select/bootstrap-select.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('metronic/plugins/select2/select2.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('metronic/plugins/jquery-multi-select/js/jquery.multi-select.js') }}"></script>
+
+        <script src="{{ asset('metronic/plugins/jquery-tags-input/jquery.tagsinput.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/scripts/core/app.js') }}"></script>
+        <script src="{{ asset('metronic/scripts/custom/components-dropdowns.js') }}"></script>
+        <script src="{{ asset('metronic/scripts/custom/components-form-tools.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('metronic/plugins/fuelux/js/spinner.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('metronic/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('metronic/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('metronic/plugins/jquery.input-ip-address-control-1.0.min.js') }}"></script>
+        <script src="{{ asset('metronic/plugins/jquery.pwstrength.bootstrap/src/pwstrength.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/jquery-tags-input/jquery.tagsinput.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/bootstrap-touchspin/bootstrap.touchspin.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/typeahead/typeahead.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('metronic/plugins/typeahead/handlebars.min.js') }}" type="text/javascript"></script>
+        
+        <script>
+            jQuery(document).ready(function() {
+
+                ComponentsDropdowns.init();
+                
+                $('#submit1').click(function(){
+                    if(!$('li').hasClass('select2-search-choice'))
+                    {
+                        alert('test');
+                        $('#error').css('display','block');
+
+                    }
+                    else
+                        $('#formform').submit();
+                   //document.location.reload();
+                        //$('#formform').submit();
+                });
+                
+                
+            });
+        </script>
+ </body>
+</html>
+
+
+
+ 
+

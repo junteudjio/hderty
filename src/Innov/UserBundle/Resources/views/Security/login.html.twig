@@ -1,0 +1,20 @@
+	
+ <div class="pop-over clearfix fancy-scrollbar" id="formLogin" style="display: none;right:0; max-height: 575px; top: 44px;">
+         <div class="header clearfix"> <a class="back-btn js-back-view" href="#" style="display: none;"> <span class="icon-sm icon-leftarrow"></span> </a> <span class="header-title">connexion</span> <a class="close-btn js-close-popover" id="hideLogin" href="#"> <span class="icon-sm icon-remove"></span> </a> </div>
+         <div class="content clearfix" style="">
+            <div class="login-popover">
+               <form action="{{ path("fos_user_security_check") }}" method="post" novalidate="">
+                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                 <span>
+                                {% if error %}
+                                    {{ error  }}
+                                 {% endif %}			
+                 </span>
+                  <label for="email-login"> {{ 'innov.register_and_login.email'|trans   }} </label> <input type="email" name="_username" id="email-login" value="" class="js-autofocus" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off">
+                  <label for="password-login"> {{ 'innov.register_and_login.password'|trans   }} </label> <input type="password" name="_password" id="password-login"> <input type="submit" class="primary wide js-password-login" value="Connexion"> <br/>
+                  <p class="quiet"> {{ 'innov.register_and_login.nouveau'|trans   }} <a href="{{ path("fos_user_registration_register") }}"><strong>{{ 'innov.accueil.creer_compte'|trans   }}</strong></a> </p>
+                  <input type="hidden" name="returnUrl" value="/"> 
+               </form>
+            </div>
+         </div>
+</div>

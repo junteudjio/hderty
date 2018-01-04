@@ -1,0 +1,5 @@
+ <form id='addDossierForm' action="{{ path('InnovGroup_creerDossier', {'id': groupe.id })}}" {{ form_enctype(formDossier) }} method="POST">
+        {{ form_widget(formDossier.nom , { 'attr': {'id': 'nom'} }) }}
+        {{ form_rest(formDossier)}}
+ </form>
+     

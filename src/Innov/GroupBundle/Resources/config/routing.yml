@@ -1,0 +1,236 @@
+InnovGroup_allGroups:
+    pattern: /groupes
+    defaults:  { _controller: InnovGroupBundle:Group:listeDesGroupes } 
+
+InnovGroup_creerGroup:
+    pattern: /creer/groupe
+    defaults:  { _controller: InnovGroupBundle:Group:creerGroupe }
+
+InnovGroup_supprDansGroupe:
+    pattern: /supprDansGroupe/{offset}
+    defaults:  { _controller: InnovGroupBundle:Group:supprDansGroupe } 
+
+
+InnovGroup_entrerGroupe:
+   pattern: /groupe/{id}
+   defaults: { _controller: InnovGroupBundle:Group:entrerGroupe }
+
+InnovGroup_voirProfil:
+   pattern: /voirProfil/{id}
+   defaults: { _controller: InnovGroupBundle:Group:voirProfil }
+   
+   
+InnovGroup_entrerGroupe2:
+   pattern: /groupe/{id_groupe}/{offset}
+   defaults: { _controller: InnovGroupBundle:Group:entrerGroupe2 }
+
+
+InnovGroup_entrerDossier:
+   pattern: /dossier/{id}
+   defaults: { _controller: InnovGroupBundle:Group:entrerDossier } 
+   
+
+
+InnovGroup_voirToutesMesNotifs:
+    pattern: /mesnotifications
+    defaults: { _controller: InnovGroupBundle:Group:voirMesNotifs } 
+    
+InnovGroup_demandeRejoindreGroupe:
+    pattern: /rejoindre/groupe/{id}
+    defaults: { _controller: InnovGroupBundle:Group:demandeRejoindreGroupe } 
+    
+        
+InnovGroup_accepterDemandeGroupe:
+    pattern: /accepter/demande/{user_id}/{groupe_id}
+    defaults: { _controller: InnovGroupBundle:Group:accepterDemande }
+   
+InnovGroup_creerDossier:
+    pattern: /creer/dossier/{id}
+    defaults: { _controller: InnovGroupBundle:Group:creerDossier }
+    
+InnovGroup_creerSousDossier:
+    pattern: /creer/sousDossier/{id}
+    defaults: { _controller: InnovGroupBundle:Group:creerSousDossier }
+    
+InnovGroup_addExamCollection:
+    pattern: /add/ExamCollection/{id}
+    defaults: { _controller: InnovGroupBundle:Group:addExamCollection }
+    
+InnovGroup_test:
+    pattern: /add/test
+    defaults: { _controller: InnovGroupBundle:Group:test }
+    
+InnovGroup_test2:
+    pattern: /add/test2/{id}
+    defaults: { _controller: InnovGroupBundle:Group:test2 }
+
+InnovGroup_test3:
+    pattern: /add/test3/{id}
+    defaults: { _controller: InnovGroupBundle:Group:test3 }
+    
+InnovGroup_creerSousDossierPerso:
+    pattern: /creer/sousDossierPerso
+    defaults: { _controller: InnovGroupBundle:Group:creerSousDossierPerso }
+    
+InnovGroup_switcher:
+    pattern: /switcher
+    defaults: { _controller: InnovGroupBundle:Group:switcher }
+
+InnovGroup_renderJsTree:
+    pattern: /renderJsTree
+    defaults: { _controller: InnovGroupBundle:Group:renderJsTree }
+    
+InnovGroup_rechercheAutoComplete:
+    pattern: /rechercheAuto
+    defaults:  { _controller: InnovGroupBundle:Group:rechercheAutoComplete }  
+  
+InnovGroup_ajaxTags:
+    pattern: /ajaxTags
+    defaults:  { _controller: InnovGroupBundle:Group:ajaxTags }  
+    
+InnovGroup_visionnerDoc:
+    pattern: /visionnerDoc
+    defaults:  { _controller: InnovGroupBundle:Group:visionnerDoc } 
+
+InnovGroup_visionnerExCo:
+    pattern: /visionnerExCo
+    defaults:  { _controller: InnovGroupBundle:Group:visionnerExCo } 
+
+InnovGroup_deletePerso:
+    pattern: /deletePerso
+    defaults:  { _controller: InnovGroupBundle:Group:deletePerso } 
+
+InnovGroup_getTags:
+    pattern: /getTags
+    defaults:  { _controller: InnovGroupBundle:Group:getTags }
+    
+InnovGroup_solrSearch2:
+    pattern: /solrSearch
+    defaults:  { _controller: InnovGroupBundle:Group:solrSearch2 } 
+
+
+InnovGroup_solrSearch:
+    pattern: /solrSearch/{query}
+    defaults:  { _controller: InnovGroupBundle:Group:solrSearch, query: _a_a_a_a_ } 
+
+InnovGroup_solrSearch3:
+    pattern: /solrSearch/{query}/ordre/{sort_mode}
+    defaults:  { _controller: InnovGroupBundle:Group:solrSearch, sort_mode: default } 
+
+InnovGroup_solrSearch4:
+    pattern: /solrSearch/{query}/ordre/{sort_mode}/{offset}
+    defaults:  { _controller: InnovGroupBundle:Group:solrSearch, sort_mode: default } 
+
+InnovGroup_solrSearchGroupe2:
+    pattern: /solrSearchGroupe/{get_query}
+    defaults:  { _controller: InnovGroupBundle:Group:solrSearchGroupe } 
+
+InnovGroup_solrSearchGroupe:
+    pattern: /solrSearchGroupe
+    defaults:  { _controller: InnovGroupBundle:Group:solrSearchGroupe } 
+
+InnovGroup_affircheFormSearchGroup:
+    pattern: /affircheFormSearchGroup
+    defaults:  { _controller: InnovGroupBundle:Group:affircheFormSearchGroup } 
+
+
+InnovGroup_accueil:
+    pattern: /accueil/{login_error}
+    defaults:  { _controller: InnovGroupBundle:Group:accueil, login_error: false } 
+    
+InnovGroup_ajoutMembre:
+    pattern: /ajoutMembre/{id}
+    defaults:  { _controller: InnovGroupBundle:Group:ajoutMembre }
+
+InnovGroup_partagerExCo:
+    pattern: /partagerExCo
+    defaults:  { _controller: InnovGroupBundle:Group:partagerExCo } 
+  
+InnovGroup_partagerEssaiCo:
+    pattern: /partagerEssaiCo
+    defaults:  { _controller: InnovGroupBundle:Group:partagerEssaiCo }
+
+InnovGroup_renderListeExamCo:
+    pattern: /renderListeExamCo
+    defaults:  { _controller: InnovGroupBundle:Group:renderListeExamCo } 
+
+InnovGroup_commenterExCo:
+    pattern: /commenterExCo
+    defaults:  { _controller: InnovGroupBundle:Group:commenterExCo }
+
+InnovGroup_commenterEssaiCo:
+    pattern: /commenterEssaiCo
+    defaults:  { _controller: InnovGroupBundle:Group:commenterEssaiCo }
+    
+InnovGroup_SupprimerCommentExCo:
+    pattern: /SupprimerCommentExCo
+    defaults:  { _controller: InnovGroupBundle:Group:SupprimerCommentExCo }
+    
+InnovGroup_SupprimerCommentEssaiCo:
+    pattern: /SupprimerCommentEssaiCo
+    defaults:  { _controller: InnovGroupBundle:Group:SupprimerCommentEssaiCo }
+    
+InnovGroup_AfficherCommentExCo:
+    pattern: /AfficherCommentExCo
+    defaults:  { _controller: InnovGroupBundle:Group:AfficherCommentExCo }
+    
+InnovGroup_AfficherCommentEssaiCo:
+    pattern: /AfficherCommentEssaiCo
+    defaults:  { _controller: InnovGroupBundle:Group:AfficherCommentEssaiCo }  
+    
+    
+InnovGroup_visionnerEssaiCo:
+    pattern: /visionnerEssaiCo
+    defaults:  { _controller: InnovGroupBundle:Group:visionnerEssaiCo }
+
+InnovGroup_AjouterAuxFavoris:
+    pattern: /AjouterAuxFavoris
+    defaults:  { _controller: InnovGroupBundle:Group:AjouterAuxFavoris } 
+
+InnovGroup_voirMembres: 
+    pattern: /voirMembres/{id}
+    defaults: { _controller: InnovGroupBundle:Group:voirMembres }
+
+InnovGroup_vouloirRejoindreGroupe: 
+    pattern: /vouloirRejoindreGroupe/{id}
+    defaults: { _controller: InnovGroupBundle:Group:vouloirRejoindreGroupe }
+    
+InnovGroup_visionnerPublic: 
+    pattern: /visionnerPublic
+    defaults: { _controller: InnovGroupBundle:Group:visionnerPublic }
+    
+InnovGroup_visionnerPublicExCo: 
+    pattern: /visionnerPublicExCo/{idComplet}
+    defaults: { _controller: InnovGroupBundle:Group:visionnerPublicExCo }
+
+InnovGroup_visionnerPublicDoc: 
+    pattern: /visionnerPublicDoc/{idComplet}
+    defaults: { _controller: InnovGroupBundle:Group:visionnerPublicDoc }
+
+InnovGroup_index:
+    pattern: /
+    defaults:  { _controller: InnovGroupBundle:Group:accueil }
+
+
+InnovGroup_index3:
+    pattern: /{login_error}
+    defaults:  { _controller: InnovGroupBundle:Group:accueil, login_error: false } 
+
+
+InnovGroup_renderFormRejoindreGroupe:
+    pattern: /renderFormRejoindreGroupe/{id}
+    defaults:  { _controller: InnovGroupBundle:Group:renderFormRejoindreGroupe } 
+
+
+InnovGroup_traduction:
+    pattern: /traduction/{name}
+    defaults:  { _controller: InnovGroupBundle:Group:traduction } 
+
+innovGroup_consulterDocGroupe:
+    pattern: /consulterDocGroupe/{id}/order_by/{sort_mode}
+    defaults:  { _controller: InnovGroupBundle:Group:consulterDocGroupe, sort_mode: default } 
+
+
+innovGroup_indexerTous:
+    pattern: /indexerTous/{offset}
+    defaults:  { _controller: InnovGroupBundle:Group:indexerTous } 

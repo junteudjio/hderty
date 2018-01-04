@@ -1,0 +1,17 @@
+ {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+ 
+    {% for groupe in app.user.mesGroupes %}
+      
+                             <li class="sub-menu"  >
+                                <a href="{{ path("InnovGroup_entrerGroupe", {'id': groupe.id }) }}" style="padding:3px;">
+                                    <span> {{  groupe.nom }}
+                                       
+                                    </span>
+                                </a>
+                            </li>
+                            
+                             
+    {% endfor %} 
+  
+{% endif %}

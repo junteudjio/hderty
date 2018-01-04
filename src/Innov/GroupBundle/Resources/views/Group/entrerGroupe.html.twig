@@ -1,0 +1,167 @@
+{% extends "InnovGroupBundle::layout.html.twig" %}
+
+
+      {% block content %}    
+                       
+                   <!-- Upload exam -->     
+                   <div class="row" >
+                   
+                       <div class='col-lg-7' style="padding-right:0;">
+                    <section class="panel">
+                          <header class="panel-heading">
+                              <p align="center">{{ 'innov.groupe.partager_ennonce'|trans }}</p>
+                          </header>
+                          <div id="nouveauExam" class="panel-body" style="padding:7px;">
+                              <div class="enonceShow" style="float:left;padding:0;">
+                                  
+                               <a  style="padding:0;margin-left:110px;margin-right:210px;" data-fancybox-type="iframe" class="btn green tooltip1 yellow-tooltip" id="fancy-upload2" href="{{ path("InnovGroup_test2", {'id': groupe.id }) }}">
+                                   <i class=" icon-camera text-primary" style="font-size:33px;"></i>
+                                   <span>{{ 'innov.groupe.ajout_doc_upload'|trans }}</span>
+                                      
+                                </a>
+                                  
+                              </div>
+                                  <p id="nodeTemp" align="center" style="display:none"></p> 
+                                  <p id="enonceCache" align="center" style="display:none"> {{ 'innov.groupe.partager_clic'|trans }}</p>
+                              <div class="enonceShow" style="display:inline-block;padding:0;">
+                               <a  class="btn green tooltip1 yellow-tooltip" style="padding:0;" >
+                                  <i class=" icon-home text-default" style="font-size:36px;" id="open_perso"></i>
+                                  <span>{{ 'innov.groupe.ajout_doc_espace_perso'|trans|raw }}</span>
+                                </a> 
+                                   
+                              </div>                              
+
+                          </div>
+                      </section>   
+                    </div>
+                       <div id="fleche" class="col-lg-3" style="margin-top:20px;padding-left:0;display:none;">
+                           <img src="{{ asset('img/fleche.png') }}" width="150" height="60" style="-moz-transform: rotate(-10deg) ;-webkit-transform: rotate(-10deg) ;"/>
+                   </div>
+                   
+                    
+                       
+                   </div>
+                   <!-- End upload document -->
+                       
+                        <br/>
+                        
+                        <div class="row" id="examCollection">
+                            
+                       
+                          
+                            <!-- Hidden form -->
+                            
+                            <!-- end hidden form -->
+                            
+                             {% include "InnovGroupBundle:Group:listeExamCollection.html.twig" %} 
+
+                        </div>
+                        
+                        {% set nbre_examCo_total = groupe.examCollections|length %}
+                       
+                    {% if nbre_examCo_total > 10 %}
+                       {% set nbre_pages = nbre_examCo_total/ 10 %}
+                       {% set nbre_pages = nbre_pages|round(0, 'ceil') %}
+                        
+                        <div class="col-lg-7" style="padding-right:0;">
+                       <section>
+                               <div>
+                                          <ul class="pagination pagination-sm">
+                                             {% for p in 1..nbre_pages  %}
+                                                {% if loop.index == 1 %}
+                                                    <li><a href="{{ path('InnovGroup_entrerGroupe2', {'id_groupe': groupe.id , 'offset': p}) }}">«</a></li>
+                                                {% elseif loop.index >1  and not loop.last %}
+                                                     <li><a href="{{ path('InnovGroup_entrerGroupe2', {'id_groupe': groupe.id , 'offset': p}) }}">{{ p }}</a></li>
+                                                {% else %}
+                                                     <li><a href="{{ path('InnovGroup_entrerGroupe2', {'id_groupe': groupe.id , 'offset': p}) }}">»</a></li>
+                                                {% endif %}
+                                                
+                                              {% endfor %}
+                                          </ul>
+                                </div>
+                       </section>
+                        </div>
+                     {% endif %}
+                                {% endblock %}
+     
+{% block javascript %}
+                        <style>
+    .tooltip1
+{
+  position: relative;
+ 
+  
+  display: inline-block;
+  text-decoration: none;
+  
+  outline: none;
+}
+
+.tooltip1 span
+{
+  visibility: hidden;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  z-index: 999;
+  width: 230px;
+  margin-left: -127px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  opacity: .9;
+  background-color: #ddd;
+  background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+  text-shadow: 0 1px 0 rgba(255,255,255,.4);
+}
+
+.tooltip1:hover
+{
+  border: 0; /* IE6 fix */
+}
+
+.tooltip1:hover span
+{
+  visibility: visible;
+}
+
+.tooltip1 span:before,
+.tooltip1 span:after
+{
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -8px;
+  border-top: 8px solid #ddd;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 0;
+}
+
+.tooltip1 span:before
+{
+  border-top-color: #ccc;
+  bottom: -8px;
+}
+</style>    
+     {{ parent() }}
+        <script type="text/javascript">
+         $(function() {
+         var id_groupe = {{ groupe.id }}; 
+         
+    
+     });   
+      
+</script>
+
+{% endblock %}

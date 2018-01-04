@@ -1,0 +1,49 @@
+{# empty Twig template #}
+{% extends "::layout.html.twig" %}
+
+
+
+{% block content %}
+
+
+
+ {# page accueil user NON-connecter #}                            
+{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+<div>
+        {{ render(controller("InnovUserBundle:Security:login")) }}                    
+    </div>
+
+    <div>
+        {{ render(controller("InnovUserBundle:Registration:register")) }}                    
+        </div>
+{# fin page accueil user NON-connecter #}
+
+{# debut page accueil user CONNECTER #}
+{% else %}
+
+    {#
+        Pour un user connecter le contenu de la page d'accueil differe en fonction de 3 critères:
+          1-  s'il y a une erreur serveur solr ou MySql 
+          2-  s'il s'agit d'un new user on lui afiche une page d'aide sur le fonctionnement du site
+          3-  s'il s'agit d'un ancien user on lui fait des recommandations de documents 
+     #}
+
+    {% if erreur_serveur == true %}
+         {% include "InnovGroupBundle:Group:erreurServeur.html.twig" %}        
+    {% elseif new_user == true %}
+         {% include "InnovGroupBundle:Group:userHelper.html.twig" %} 
+    {% else %}
+            {#  s'il le moteur de recherche à trouver moins de 3 à recommander 
+                alors on raffiche une page d'aide POUR EXPLIQUER L'INTERFACE DU SITE
+             #}
+            {% if docs|length < 3 %}
+                 {% include "InnovGroupBundle:Group:userHelper.html.twig" %} 
+            {% else %}    
+                  {% include "InnovGroupBundle:Group:recommandations.html.twig" %} 
+            {% endif %}
+    {% endif %}
+{% endif %}
+
+
+{% endblock %}

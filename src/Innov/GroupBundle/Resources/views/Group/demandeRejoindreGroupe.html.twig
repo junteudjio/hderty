@@ -1,0 +1,24 @@
+{% extends "InnovGroupBundle::layout.html.twig" %}
+
+ {% block infoGroupe %}
+{% endblock %}
+
+{% block content %}
+
+   
+    <h3> {{ groupe.nom }} </h3>
+    <h4> liste des membres </h4>
+    {% for membre in groupe.membres %}
+       {{ membre.nom ~ ' ' ~ membre.prenom }}
+    {% endfor %}
+    
+  {% if  booleen ==false %}
+   <a href="{{ path('InnovGroup_demandeRejoindreGroupe', {'id': groupe.id }) }}"> {{ 'innov.groupe.demande_rejoindre'|trans }} </a>
+
+  {% else  %}
+   <p> {{ 'innov.groupe.deja_membre'|trans }} </p>
+   
+   <a href="{{ path('InnovGroup_accueil') }}" ><button class="btn-primary"> {{ 'innov.aller_a_laccueil'|trans }}</button> </a>
+   {% endif %}
+   
+{% endblock %}

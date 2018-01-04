@@ -1,0 +1,4 @@
+<form style="display:none;" id="form_search_group" action="{{ path('InnovGroup_solrSearchGroupe') }}" method="POST" >
+         {{ form_widget(form.query , { 'attr': { 'class':'form-control  input_search_group', 'id':'input_search_group'} }) }}
+        {{ form_rest(form)}}
+</form>

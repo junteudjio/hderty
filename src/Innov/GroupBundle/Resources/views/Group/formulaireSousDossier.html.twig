@@ -1,0 +1,5 @@
+ <form id='addSousDossierForm' action="{{ path('InnovGroup_creerSousDossier', {'id': dossier.id })}}" {{ form_enctype(formSousDossier) }} method="POST">
+        {{ form_widget(formSousDossier.nom , { 'attr': {'id': 'nom'} }) }}
+        {{ form_rest(formSousDossier)}}
+ </form>
+     

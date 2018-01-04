@@ -1,0 +1,75 @@
+ {% for groupe in groupes %}
+<aside class="profile-nav alt green-border">
+                          <section class="panel">
+                             <div class="user-heading alt green-bg">                                 
+                                  <h1>{{ groupe.nom }}</h1>
+                                  <p>{{groupe.membres[0]}}</p>
+                                  <span><a style="border:none;position:absolute;right:20px;font-weight:bold;" href="{{ path('InnovGroup_demandeRejoindreGroupe', {'id':groupe.id }) }}"> {{ 'innov.content.vouloirRejoindreGroupe'|trans }} </a></span>
+                              </div>
+
+                              <ul class="nav nav-pills nav-stacked">
+                                  <li><a href="{{ path('InnovGroup_voirMembres', {'id': groupe.id}) }} "> <i class="icon-time"></i> {{ 'innov.content.voirMembresGroupe'|trans }}  <span class="label label-primary pull-right r-activity">{{ 'innov.content.nombreDeMembres'|transchoice(groupe.membres|length) }}</span></a></li>
+                                   {% set nbre_docs = groupe.examCollections|length %}
+                                    {% for examCo in groupe.examCollections %}
+                                        {% set nbre_docs = nbre_docs + examCo.essaisCollections|length %}
+                                     {% endfor %}
+                                  <li><a href="{{ path('innovGroup_consulterDocGroupe', {'id': groupe.id}) }}"> <i class="icon-calendar"></i>{{ 'innov.content.voirDocumentsGroupe'|trans }} <span class="label label-info pull-right r-activity">{{ 'innov.content.nombreDeDocumentsPartages'|transchoice(nbre_docs) }}</span></a></li>
+                                  
+                              </ul>
+
+                          </section>
+                      </aside>
+{% endfor %}
+
+
+
+       {#                     {% for groupe in groupes %}
+            <div class="row">
+                               <div >
+                      <!--user info table start-->
+                      <section class="panel">
+                          <header class="center"> {{ groupe.nom }} </header>
+                          <div class="panel-body">
+                              <a href="#" class="task-thumb"> #}
+                                  {# on reccupère l'admin du groupe on sait que c'est le premier membre du groupe #}
+                    {#              {% set admin = groupe.membres[0] %}
+                                <img src="{{ asset(admin.photo.uploadDir ~ '/' ~ admin.photo.id ~'.' ~ admin.photo.url) }}" alt="{{ admin.photo.alt }}" height="62" width="62">
+                              </a>
+                              <div class="task-thumb-details">
+                                  <h1><a href="#">{{ admin.prenom ~'  '~admin.nom }}</a></h1>
+                                  <p> {{ 'innov.content.groupeAdminLabel'|trans }}</p>
+                              </div>
+                          </div>
+                          <a href=""> {{ 'innov.content.vouloirRejoindreGroupe'|trans }} </a>
+                            {{ render(controller("InnovGroupBundle:Group:renderFormRejoindreGroupe", {'id': groupe.id})) }}   
+                          <table class="table table-hover personal-task">
+                              <tbody>
+                                <tr>
+                                    <td>
+                                        <i class=" icon-tasks"></i>
+                                    </td>
+                                    <td>  {{ 'innov.content.nombreDeMembres'|transchoice(groupe.membres|length) }}</td>
+                                    <td> <a href="{{ path('InnovGroup_voirMembres', {'id': groupe.id}) }} "> {{ 'innov.content.voirMembresGroupe'|trans }} </a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="icon-warning-sign"></i>
+                                    </td>
+                                    {% set nbre_docs = groupe.examCollections|length %}
+                                    {% for examCo in groupe.examCollections %}
+                                        {% set nbre_docs = nbre_docs + examCo.essaisCollections|length %}
+                                     {% endfor %}
+                                    <td>{{ 'innov.content.nombreDeDocumentsPartages'|transchoice(nbre_docs) }}</td>
+                                    <td> <a href="{{ path('innovGroup_consulterDocGroupe', {'id': groupe.id}) }}"> {{ 'innov.content.voirDocumentsGroupe'|trans }} </a></td>
+                                </tr>
+                               
+                                
+                              </tbody>
+                          </table>
+                      </section>
+                      <!--user info table end-->
+                  </div>
+                </div>
+            {% endfor %} 
+                #}
+               

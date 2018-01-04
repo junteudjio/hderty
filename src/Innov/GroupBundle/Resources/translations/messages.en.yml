@@ -1,0 +1,112 @@
+innov.groupe.form_button_creer: 'create a group'
+innov.groupe.button_chercher: 'search a group'
+innov.groupe.form_creer_header: 'create a new group'
+innov.groupe.form_nom_groupe_label: 'group name'
+innov.groupe.form_ajout_membre_label: 'add some members'
+innov.groupe.form_fermer: cancel
+innov.groupe.creer_action: create
+innov.groupe.ajout_membre_placeholder: 'type your classmates names here'
+innov.groupe.mes_groupes: 'my groups'
+innov.groupe.voir_membres: '1 member| %count% members'
+innov.groupe.jaime: like
+innov.groupe.poster_dans: posted in
+innov.groupe.commenter: comment
+innov.groupe.partager_ennonce: 'share an exercise'
+innov.groupe.partager_essai: 'share your solution'
+innov.groupe.partager_clic: 'DOUBLE-CLICK on the document you want to share'
+innov.groupe.nbre_vue: '{0} %count% view|{1} %count% view|]1,Inf]%count% views'
+innov.groupe.title_commenter_doc: '{0} be the first to comment this document|{1} %count% person commented this document|]1,Inf]%count% people commented this document'
+innov.groupe.title_aimer_doc: '{0} be the first to like this document|{1} %count% person likes this document|]1,Inf]%count% people like this document'
+innov.groupe.title_voir_doc: '{0} be the first to consult this document|{1} %count% person viewed this document|]1,Inf]%count% people viewed this document'
+innov.groupe.title_favoris_doc: 'add this document to your favorites'
+innov.groupe.title_partager_dans_groupe_doc: 'share this document within a group'
+innov.groupe.title_aimer_doc_clic: 'click here if you like this document'
+innov.groupe.title_commenter_doc_clic: 'click here to comment this document'
+innov.groupe.ajout_doc_upload: 'share from your computer'
+innov.groupe.ajout_doc_espace_perso: 'share from your personal space'
+innov.navbar.message.header: '{0} no new message| {1} %count% new message |]1,Inf] %count% new messages'
+innov.navbar.message.contenu: 'sends you a message at'
+innov.navbar.message.footer: 'see all my messages'
+innov.navbar.notification.header: '{0} no new notification|{1} %count% new notification | ]1,Inf]%count% new notifications'
+innov.navbar.notification.notif_demande_rejoindre: 'ask to join the group'
+innov.navbar.notification.notif_accepter_demande: 'has accepted your request to join '
+innov.navbar.notification.notif_vous_a_ajouter: 'has added you to the group'
+innov.navbar.notification.footer: 'see all my notifications'
+innov.navbar.search_placeholder: 'search for exercises, exams, tests, and other things of your interest'
+innov.navbar.title_search_bar: 'enter some key-words  e.g. " injectives functions ; algebra exam ENSA tanger 2010"'
+innov.navbar.plein_ecran: 'full screen'
+innov.navbar.profil: 'your profil'
+innov.navbar.securite: security
+innov.navbar.deconnexion: LOGOUT
+innov.espace_perso.header: 'PERSONAL SPACE'
+innov.espace_perso.helper_text: ( RIGHT-CLICK to open your files )
+innov.espace_perso.creer_dossier: 'create a folder'
+innov.espace_perso.ajout_document: 'add a document'
+innov.espace_perso.mes_uploads: Uploads
+innov.espace_perso.mes_favoris: Favorites
+innov.espace_perso.placeholder_creer_dossier: 'folder name'
+innov.upload_form.header: 'download a new document'
+innov.upload_form.document_titre: 'give a name to this document'
+innov.upload_form.document_tag: 'add some tags'
+innov.upload_form.button_add: 'add images'
+innov.upload_form.button_submit: 'start upload'
+innov.upload_form.button_annuler: cancel
+innov.upload_form.button_supprimer: delete
+innov.upload_form.document_description: 'add a description'
+hello: hello
+innov.accueil.inscription: 'Sign Up'
+innov.accueil.login: login
+innov.accueil.slogan: 'Students like it before, during and after their exams !'
+innov.accueil.creer_compte: 'create an account'
+innov.accueil.hderty_vous_permet: 'enable yout to <br> 1- search  for exams of your school and  <br> others of your interest <br> 2- with your mobile, easily share<br> exercises and solutions with your classmates !<br> 3- to solve all kinds of exercises on-line with your <br> friends and enjoy collectiv intelligence <br> to be much more faster  <br> 4- And above all Succeed in your exams'
+innov.accueil.hderty_vous_permet_conclusion: 'Success become easy with H-derty'
+innov.accueil.regarder_video: 'look at this video to learn more about'
+innov.accueil.utile: Usefull
+innov.accueil.utile_desc: 'Search for past examinations <br> it''s  a very  common need   <br> Stop Seeking ;<br>You allready got them on'
+innov.accueil.social: Social
+innov.accueil.social_desc1: 'Why work alone ?<br> life is social , studies are social ,<br> Job is social !'
+innov.accueil.social_desc2: 'is social as well !'
+innov.accueil.benefique: beneficial
+innov.accueil.benefique_desc1: 'photocopies are superseded now ,  <br> photos are better  <br> Use'
+innov.accueil.benefique_desc2: 'and <br> easily share exercises & <br> corrections with your classmates'
+innov.accueil.telecharger_mobile: 'download H-derty-mobile'
+innov.accueil.hderty_partout: 'H-derty is every where !'
+innov.content.listesDesGroupesTitre: 'Groups List'
+innov.content.consulterDocGroupe_label: 'Documents of group'
+innov.content.consulterDocGroupe_classerPar: 'order by'
+innov.content.consulterDocGroupe_classerPar_pertinence: relevance
+innov.content.consulterDocGroupe_classerPar_plus_recent: recent
+innov.content.consulterDocGroupe_classerPar_populaire: popular
+innov.groupe.demande_rejoindre: 'ask to join this group'
+innov.groupe.deja_membre: 'your are allready member of this group'
+innov.aller_a_laccueil: 'return to welcom page'
+innov.welcome: welcome
+innov.erreur_serveur.label: 'H-derty Servers are partially  unavaillable'
+innov.erreur_serveur.excuse: 'we apologize for this desagrement'
+innov.notification.label: notifications
+innov.notification.accepter_demande: accept
+innov.content.recommandations: 'you could be interested by these documents'
+innov.content.groupeAdminLabel: Administrator
+innov.content.vouloirRejoindreGroupe: 'join this group'
+innov.content.nombreDeMembres: '1 member| %count% members'
+innov.content.voirMembresGroupe: 'consult list of members'
+innov.content.nombreDeDocumentsPartages: '{0} 0 document shared|{1} %count% document shared | ]1,Inf]about %count% documents shared'
+innov.content.voirDocumentsGroupe: 'consult this documents'
+innov.content.resultat_recherche: 'results of  search for'
+innov.content.groupe_non_trouve: 'has not been found'
+innov.content.verif_orthographe_ou: 'recheck the spelling or'
+innov.content.consulter_liste_groupe: 'consult list of all groups'
+innov.content.vouloirRejoindreGroupe2: 'you are not yet member of this group ! do you want to join ?'
+innov.register_and_login.label: Registration H-Derty
+innov.register_and_login.prenom: first name
+innov.register_and_login.prenom_place_h: your first name
+innov.register_and_login.nom: name
+innov.register_and_login.nom_place_h: your name
+innov.register_and_login.email: email
+innov.register_and_login.email_place_h: your email
+innov.register_and_login.password: password
+innov.register_and_login.confirm_password: confirm password
+innov.register_and_login.creer_btn: create new account
+innov.register_and_login.deja_un_compte: are allready member ?
+innov.register_and_login.nouveau: new ?
+

@@ -1,0 +1,4 @@
+<form id="search_form" action="{{ path('InnovGroup_solrSearch', {'query': '_a_a_a_a_'}) }}" method="POST" >
+         {{ form_widget(form.query , { 'attr': {'id': 'nom', 'style':'color:#000000', 'class':'form-control input-sm', 'title': 'innov.navbar.title_search_bar'|trans , 'placeholder': 'innov.navbar.search_placeholder'|trans } }) }}
+        {{ form_rest(form)}}
+</form>

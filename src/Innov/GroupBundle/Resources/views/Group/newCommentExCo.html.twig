@@ -1,0 +1,45 @@
+
+{% for comment in comments %}
+<div class="msg-time-chat">
+    <a href="#" class="message-img"><img src='{{ asset(comment.auteur.photo.uploadDir ~ '/' ~ comment.auteur.photo.id ~'.' ~ comment.auteur.photo.url) }}' alt='{{ comment.auteur.photo.alt }}' height='29' width='29'/>
+</a>
+    <div class="message-body msg-in">
+        <span class="arrow"></span>
+        <div class="text">
+            <p class="attribution"><a href="#">{{ comment.auteur.nom ~' '~comment.auteur.prenom }}</a> le {{ comment.date|date("d/m/Y - H:i:s") }}</p>
+            <p>{{ comment.contenu }}</p>
+            {% if is_granted('DELETE', comment) %}
+                <a class="poubelle" href="#" id="{{ 'delete_'~comment.id }} "> <i class="icon-trash"></i></a>
+             {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
+<script>
+    $('.poubelle').each(function(i){
+                                                                        var id = $(this).attr('id');
+                                                                        var temp = id.split('_');
+                                                                        var idCo = temp[1];
+                                                                        $(this).click(function(){
+                                                                           alert(idCo);
+                                                                            $.ajax({
+                                                                            url: window.urlSupprimerCommentaireExCo,
+                                                                            type: 'POST',
+                                                                            data: {
+                                                                                id: idCo,
+                                                                                
+                                                                            },
+                                                                            success: function(resultat) {
+                                                                                alert("aaaaaa");
+                                                                                $('#messageAppend').html(resultat);
+                                                                               
+
+                                                                            }
+                                                                            
+                                               });
+                                               });
+                                               });
+                                               </script>

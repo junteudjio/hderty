@@ -1,0 +1,22 @@
+{% extends "InnovGroupBundle::layout.html.twig" %}
+
+
+{% block infoGroupe %}
+{% endblock %}
+
+{% block content %}
+
+   
+    <h3> {{ groupe.nom }} </h3>
+    <h4> membres </h4>
+    {% for membre in groupe.membres %}
+       {{ membre.nom ~ ' ' ~ membre.prenom }}
+    {% endfor %}
+    
+    
+    <h4> {{ 'innov.content.vouloirRejoindreGroupe2'|trans }} </h4>
+  
+     {% include "InnovGroupBundle:Group:formulaireRejoindreGroupe.html.twig" %} 
+
+   
+{% endblock %}

@@ -1,0 +1,63 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="col-lg-6">
+                              <!--widget start-->
+                              <section class="panel">
+                                  <div class="twt-feed blue-bg">
+                                      <h1>{{ user.prenom  ~'  '~ user.nom }}</h1>
+                                      <p>{{ user.email }}</p>
+                                      <a href="#">
+                                          <img src="{{ asset(user.photo.uploadDir ~ '/' ~ user.photo.id ~'.' ~ user.photo.url) }}" alt="{{ user.photo.alt }}" height="29" width="29">
+                                      </a>
+                                  </div>
+                                  <div class="weather-category twt-category">
+                                      <ul>
+                                          <li class="active">
+                                              <h5>{{ user.mesGroupes|length }}</h5>
+                                              Groupes
+                                          </li>
+                                          
+                                          {% set nbre_doc_partages = user.mesExamCollections|length +
+                                                user.mesEssaisCollections|length %}
+                                          {% for sousDossierPerso in user.dossierPerso.sousDossiersPerso %}
+                                                {% set nbre_doc_partages = nbre_doc_partages + sousDossierPerso.document|length %}
+                                          {% endfor %}
+                                          <li>
+                                              <h5>{{ nbre_doc_partages }}</h5>
+                                              Documents Partages
+                                          </li>
+                                          
+                                          
+                                          <li>
+                                              <h5>{{ user.notifsRecus|length }}</h5>
+                                              Notifications
+                                          </li>
+                                      </ul>
+                                  </div>
+                                
+                                
+                                 <div class="twt-write col-sm-12">
+                                     <p>  Etudie à  
+                                      {% if user.ecole %}
+                                            {{ user.ecole.nom }}
+                                      {% else %}
+                                            ... pas  mentionne ...
+                                      {% endif %}
+                                         </p>
+                                  </div>
+                                 
+                                      
+                                 {% if app.user.id == user.id %}
+                                      &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+                                      <a href="{{ path('fos_user_profile_edit') }}">  <button  class="btn btn-space btn-info" type="button">
+                                          
+                                          modifier
+                                      </button>
+                                     </a>
+                                  
+                               
+                                     {% endif %}                                
+                              </section>
+                              <!--widget end-->
+                          </div>
+    

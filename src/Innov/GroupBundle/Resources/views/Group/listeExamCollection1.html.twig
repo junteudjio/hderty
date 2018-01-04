@@ -1,0 +1,57 @@
+  {% for examCo in groupe.examCollections|reverse %}
+
+                            
+                            <div class="col-lg-7" style="padding-right:0;">
+                                <!--user info table start-->
+                              
+                                <section class="panel" >
+                                    <div class="panel-body">
+                                        <div>
+                                        <a href="#" class="task-thumb">
+                                                <img src="{{ asset(examCo.auteurExamCollection.photo.uploadDir ~ '/' ~ examCo.auteurExamCollection.photo.id ~'.' ~ examCo.auteurExamCollection.photo.url) }}" alt="{{ examCo.auteurExamCollection.photo.alt }}" height="29" width="29"/>         
+                                                 {{ examCo.auteurExamCollection.nom ~'  '~ examCo.auteurExamCollection.prenom }}
+                                        </a>
+                                        </div>
+                                        <br/>
+                                            <div class="task-thumb-details" style="margin-left:50px;">
+                                            <h1 style="float:left;"><a id="{{ 'visionExCo_'~examCo.id }}" class="visionExCo" href="#">{{ examCo.titre }} <img src="http://localhost/innov1/web/voir.png" width="20" height="20"/></a></h1>
+                                            
+                                            
+                                            </div> 
+                                        
+                                            <br/><br/><br/>
+                                       <div>
+                                           <a href="#">J'aime</a>&nbsp;.&nbsp;
+                                           <a href="#">Commenter</a>&nbsp;.&nbsp;
+                                           <a href="#" style="margin-right:160px;">
+                                            
+                                            <i class="icon-thumbs-up btn-xs text-info"></i>{{ examCo.nbreJaime }}
+                                           
+                                            
+                                            <i class="icon-comments btn-xs text-info"></i>{{ examCo.commentaires|length }}
+                                            
+                                            <i class="icon-eye-open btn-xs text-primary"></i>{{ examCo.nbreVue }} 
+                                           </a>
+                                           <a href="javascript:;" id="{{ 'favorisExamCo_'~examCo.id }}" class="favoris" > <i class="icon-star  text-warning" ></i></a>
+                                           <!-- Tags here -->
+                                        </div>    
+                                    </div>
+                                    <table class="table table-hover personal-task">
+                                        <tbody id="{{ 'essaiCollection_'~examCo.id }}">
+                                             {% include "InnovGroupBundle:Group:listeEssaiCollection.html.twig" %} 
+                                            
+                                        </tbody>
+                                    </table>
+                                </section>
+                             
+                            </div>
+                            <div class="col-lg-3" style="padding-left:0;">
+                                            <ul class="tags">
+                                                 {% for tag in examCo.tags %}
+                                                         <li><a href="#" class="tag">{{ tag.text }}</a></li>    
+                                                {% endfor %}
+                                             </ul>
+                                        </div>
+                            
+                          
+                            {% endfor %}

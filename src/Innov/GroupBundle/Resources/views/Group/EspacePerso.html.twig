@@ -1,0 +1,35 @@
+<div id="tree_1" class="tree-demo">
+        <ul test="test">
+                 {% for sousDossier in app.user.dossierPerso.sousDossiersPerso %}
+
+                        <li  id="{{ 'sousD_'~sousDossier.id }}" data-jstree='{ "type" : "racine" }'>
+                               {# s'il s'agit du dossier 'uploads' ou 'favoris' alors il faut traduire le nom #}
+                               {% if loop.index == 1 or loop.index == 2 %} 
+                                    {{ sousDossier.nom|trans }}
+                                {% else %}
+                                    {{ sousDossier.nom }}
+                                {% endif %}
+                                <ul>
+                                    {% for document in sousDossier.document %}
+                                        <li id=" {{ 'doc_'~document.id }}" class="pushpush" data-jstree='{ "type" : "file" }'>
+                                            {% if document.titre|length < 49 %}
+                                                {{ document.titre }}
+
+                                            {% else %}
+                                                {{ document.titre|slice(0,49) ~' ...'}}
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+
+
+                                </ul>	
+                        </li>
+                    {% endfor %}
+        </ul>
+								
+</div>
+
+<br><br>
+<p> {{ 'innov.espace_perso.helper_text'|trans }} </p>
+
+
